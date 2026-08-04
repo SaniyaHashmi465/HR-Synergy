@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base :: layout(~{::section})}">
+
+<section>
+
+<div class="editemp-page">
+
+    <!-- HEADER BANNER -->
+    <div class="editemp-banner mb-4">
+        <div class="banner-glow"></div>
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+            <div class="d-flex align-items-center gap-3">
+                <div class="banner-icon">
+                    <i class="fa-solid fa-user-pen"></i>
+                </div>
+                <div>
+                    <h2 class="fw-bold mb-1">Edit Employee</h2>
+                    <p class="mb-0 banner-subtitle">Update employee details and HR records</p>
+                </div>
+            </div>
+
+            <a th:href="@{/admin/viewemployees}" class="btn btn-back-employees">
+                <i class="fa-solid fa-arrow-left me-2"></i>Back to Employees
+            </a>
+        </div>
+    </div>
+
+    <!-- FORM CARD -->
+    <div class="editemp-card">
+
+        <div class="editemp-card-header">
+            <h4><i class="fa-solid fa-id-card-clip me-2"></i>Employee Update Form</h4>
+        </div>
+
+        <!-- INFO PANEL -->
+        <div class="editemp-info-panel mb-4">
+            <i class="fa-solid fa-user-shield"></i>
+            <span>Changes will update the employee profile and login details.</span>
+        </div>
+
+        <form th:action="@{/admin/updateemployee}" method="post" class="editemp-form">
+
+            <input type="hidden" name="empid" th:value="${employee.empid}">
+
+            <div class="row g-4">
+
+                <!-- Password -->
+                <div class="col-md-6">
+                    <label class="form-label">Password</label>
+                    <div class="input-icon-group">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password"
+                               name="passwd"
+                               class="form-control"
+                               th:value="${employee.passwd}"
+                               placeholder="Update login password"
+                               required>
+                    </div>
+                </div>
+
+                <!-- Employee Name -->
+                <div class="col-md-6">
+                    <label class="form-label">Employee Name</label>
+                    <div class="input-icon-group">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text"
+                               name="empname"
+                               class="form-control"
+                               th:value="${employee.empname}"
+                               placeholder="Enter employee name"
+                               required>
+                    </div>
+                </div>
+
+                <!-- Gender -->
+                <div class="col-md-6">
+                    <label class="form-label">Gender</label>
+                    <div class="input-icon-group">
+                        <i class="fa-solid fa-venus-mars"></i>
+                        <select name="gender" class="form-select" required>
+                            <option value="Male" th:selected="${employee.gender=='Male'}">Male</option>
+                            <option value="Female" th:selected="${employee.gender=='Female'}">Female</option>
+                            <option value="Other" th:selected="${employee.gender=='Other'}">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Father's Name -->
+                <div class="col-md-6">
+                    <label class="form-label">Father's Name</label>
+                    <div class="input-icon-group">
+                        <i class="fa-solid fa-user-tie"></i>
+                        <input type="text"
+                               name="fname"
+                               class="form-control"
+                               th:value="${employee.fname}"
+                               placeholder="Enter father's name"
+                               required>
+                    </div>
+                </div>
+
+                <!-- Contact Number -->
+                <div class="col-md-6">
+                    <label class="form-label">Contact Number</label>
+                    <div class="input-icon-group">
+                        <i class="fa-solid fa-phone"></i>
+                        <input type="text"
+                               name="contactno"
+                               class="form-control"
+                               th:value="${employee.contactno}"
+                               placeholder="Enter contact number"
+                               required>
+                    </div>
+                </div>
+
+                <!-- Email Address -->
+                <div class="col-md-6">
+                    <label class="form-label">Email Address</label>
+                    <div class="input-icon-group">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email"
+                               name="emailaddress"
+                               class="form-control"
+                               th:value="${employee.emailaddress}"
+                               placeholder="Enter email address"
+                               required>
+                    </div>
+                </div>
+
+                <!-- Department -->
+                <div class="col-md-6">
+                    <label class="form-label">Department</label>
+                    <div class="input-icon-group">
+                        <i class="fa-solid fa-building"></i>
+                        <input type="text"
+                               name="department"
+                               class="form-control"
+                               th:value="${employee.department}"
+                               placeholder="Enter department"
+                               required>
+                    </div>
+                </div>
+
+                <!-- Designation -->
+                <div class="col-md-6">
+                    <label class="form-label">Designation</label>
+                    <div class="input-icon-group">
+                        <i class="fa-solid fa-briefcase"></i>
+                        <input type="text"
+                               name="designation"
+                               class="form-control"
+                               th:value="${employee.designation}"
+                               placeholder="Enter designation"
+                               required>
+                    </div>
+                </div>
+
+                <!-- Salary -->
+                <div class="col-md-6">
+                    <label class="form-label">Salary</label>
+                    <div class="input-icon-group">
+                        <i class="fa-solid fa-money-check-dollar"></i>
+                        <input type="number"
+                               name="salary"
+                               class="form-control"
+                               th:value="${employee.salary}"
+                               placeholder="Enter salary"
+                               step="0.01"
+                               required>
+                    </div>
+                </div>
+
+                <!-- Address 1 -->
+                <div class="col-md-6">
+                    <label class="form-label">Address 1</label>
+                    <div class="input-icon-group textarea-icon-group">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <textarea name="address1"
+                                  class="form-control"
+                                  rows="2"
+                                  placeholder="Enter address line 1"
+                                  th:text="${employee.address1}"
+                                  required></textarea>
+                    </div>
+                </div>
+
+                <!-- Address 2 -->
+                <div class="col-md-6">
+                    <label class="form-label">Address 2</label>
+                    <div class="input-icon-group textarea-icon-group">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                        <textarea name="address2"
+                                  class="form-control"
+                                  rows="2"
+                                  placeholder="Enter address line 2"
+                                  th:text="${employee.address2}"></textarea>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- FORM ACTIONS -->
+            <div class="editemp-actions mt-4">
+                <a th:href="@{/admin/viewemployees}" class="btn btn-editemp-back">
+                    <i class="fa-solid fa-arrow-left me-2"></i>Back
+                </a>
+                <button type="submit" class="btn btn-editemp-save">
+                    <i class="fa-solid fa-floppy-disk me-2"></i>Update Employee
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+</section>
+
+</html>

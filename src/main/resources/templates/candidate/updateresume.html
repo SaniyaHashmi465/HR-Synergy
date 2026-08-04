@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base :: layout(~{::section})}">
+
+<section>
+
+	<div class="container py-5">
+
+		<div class="row justify-content-center">
+
+			<div class="col-lg-6">
+
+				<div class="card shadow-lg">
+
+					<div class="card-header bg-primary text-white">
+
+						<h3>
+
+							<i class="fa-solid fa-file-arrow-up"></i>
+
+							Update Resume
+
+						</h3>
+
+					</div>
+
+					<div class="card-body">
+
+						<div class="alert alert-success" th:if="${success}" th:text="${success}">
+						</div>
+
+						<div class="alert alert-danger" th:if="${error}" th:text="${error}">
+						</div>
+
+						<form th:action="@{/candidate/updateresume}" method="post" enctype="multipart/form-data">
+
+							<div class="mb-4">
+
+								<label class="form-label">
+
+									Upload New Resume
+
+								</label>
+
+								<input type="file" name="resumeFile" class="form-control" accept=".pdf,.doc,.doc,.docx"
+									required>
+
+							</div>
+
+							<div class="text-center">
+
+								<button class="btn btn-primary">
+
+									<i class="fa-solid fa-upload"></i>
+
+									Update Resume
+
+								</button>
+
+								<a th:href="@{/candidate/profile}" class="btn btn-secondary">
+
+									Cancel
+
+								</a>
+
+							</div>
+
+						</form>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</section>
+
+</html>

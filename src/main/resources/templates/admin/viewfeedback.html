@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html th:replace="~{base :: layout(~{::section})}">
+<section th:fragment="content">
+
+    <!-- Page CSS -->
+    <link rel="stylesheet" th:href="@{/css/viewfeedback.css}" />
+
+    <!-- Page Header Banner -->
+    <div class="fb-header-banner">
+        <div class="fb-header-inner">
+            <div class="fb-header-text">
+                <div class="fb-header-icon-wrap">
+                    <i class="fa-solid fa-comments fa-lg"></i>
+                </div>
+                <div>
+                    <h1 class="fb-title">Feedback List</h1>
+                    <p class="fb-subtitle">Review employee feedback and suggestions</p>
+                </div>
+            </div>
+            <a th:href="@{/admin/dashboard}" class="fb-back-btn">
+                <i class="fa-solid fa-arrow-left me-2"></i>Back to Dashboard
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="fb-main-wrapper">
+
+        <!-- Statistics Cards -->
+        <div class="fb-stats-row">
+            <div class="fb-stat-card" id="statTotal">
+                <div class="fb-stat-icon bg-blue">
+                    <i class="fa-solid fa-layer-group"></i>
+                </div>
+                <div class="fb-stat-body">
+                    <span class="fb-stat-value" id="totalCount">—</span>
+                    <span class="fb-stat-label">Total Feedback</span>
+                </div>
+                <div class="fb-stat-badge blue">All Records</div>
+            </div>
+
+            <div class="fb-stat-card" id="statSuggestions">
+                <div class="fb-stat-icon bg-violet">
+                    <i class="fa-solid fa-lightbulb"></i>
+                </div>
+                <div class="fb-stat-body">
+                    <span class="fb-stat-value fb-static">—</span>
+                    <span class="fb-stat-label">Employee Suggestions</span>
+                </div>
+                <div class="fb-stat-badge violet">Suggestions</div>
+            </div>
+
+            <div class="fb-stat-card" id="statRecent">
+                <div class="fb-stat-icon bg-teal">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                </div>
+                <div class="fb-stat-body">
+                    <span class="fb-stat-value" id="recentCount">—</span>
+                    <span class="fb-stat-label">Recent Feedback</span>
+                </div>
+                <div class="fb-stat-badge teal">Last 30 Days</div>
+            </div>
+
+            <div class="fb-stat-card" id="statHR">
+                <div class="fb-stat-icon bg-amber">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <div class="fb-stat-body">
+                    <span class="fb-stat-value fb-static">Active</span>
+                    <span class="fb-stat-label">HR Review</span>
+                </div>
+                <div class="fb-stat-badge amber">In Progress</div>
+            </div>
+        </div>
+
+        <!-- Table Card -->
+        <div class="fb-table-card">
+            <div class="fb-table-header">
+                <div class="fb-table-title-group">
+                    <i class="fa-solid fa-table-list fb-table-title-icon"></i>
+                    <div>
+                        <h2 class="fb-table-title">Feedback Records</h2>
+                        <p class="fb-table-subtitle">All submitted employee feedback entries</p>
+                    </div>
+                </div>
+                <div class="fb-table-actions">
+                    <span class="fb-records-badge" id="recordsBadge">Loading…</span>
+                </div>
+            </div>
+
+            <div class="fb-table-body">
+                <div class="table-responsive">
+                    <table id="feedbackTable" class="table fb-table">
+                        <thead>
+                            <tr>
+                                <th><i class="fa-solid fa-hashtag me-1 op-50"></i>ID</th>
+                                <th><i class="fa-solid fa-user me-1 op-50"></i>Name</th>
+                                <th><i class="fa-solid fa-envelope me-1 op-50"></i>Email</th>
+                                <th><i class="fa-solid fa-phone me-1 op-50"></i>Contact</th>
+                                <th><i class="fa-solid fa-message me-1 op-50"></i>Message</th>
+                                <th><i class="fa-solid fa-calendar-days me-1 op-50"></i>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="fb : ${feedbacks}" class="fb-row">
+                                <td>
+                                    <span class="fb-id-badge" th:text="${fb.feedbackid}"></span>
+                                </td>
+                                <td>
+                                    <div class="fb-name-cell">
+                                        <div class="fb-avatar" th:text="${#strings.substring(fb.name, 0, 1)}"></div>
+                                        <span class="fb-name-text" th:text="${fb.name}"></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="fb-email-text" th:text="${fb.emailaddress}"></span>
+                                </td>
+                                <td>
+                                    <span class="fb-contact-chip">
+                                        <i class="fa-solid fa-phone-volume me-1"></i>
+                                        <span th:text="${fb.contactno}"></span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="fb-msg-truncate" th:text="${fb.feedbackmsg}" th:title="${fb.feedbackmsg}"></span>
+                                </td>
+                                <td>
+                                    <span class="fb-date-chip">
+                                        <i class="fa-regular fa-calendar me-1"></i>
+                                        <span th:text="${fb.feedbackdate}"></span>
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Page JS -->
+    <script th:src="@{/js/viewfeedback.js}"></script>
+
+</section>
+
+
+</html>

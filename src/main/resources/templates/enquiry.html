@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base :: layout(~{::section})}">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Contact &amp; Enquiry | HR Synergy</title>
+</head>
+
+<body>
+	<section>
+		<!-- Bootstrap 5 -->
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+		<!-- Font Awesome -->
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+		<!-- Google Fonts: Sora (display) + Inter (body) -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link
+			href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+			rel="stylesheet">
+		<!-- Page styles -->
+		<!-- -->
+
+		<!-- ============ HERO SECTION ============ -->
+		<header class="hs-hero">
+			<div class="hs-hero-pattern" aria-hidden="true"></div>
+			<div class="container">
+				<div class="hs-hero-inner text-center">
+					<span class="hs-eyebrow fade-in-up">HR SYNERGY · CONTACT &amp; ENQUIRY</span>
+					<h1 class="hs-hero-title fade-in-up delay-1">Get In Touch With <span>HR Synergy</span></h1>
+					<p class="hs-hero-subtitle fade-in-up delay-2">
+						We are here to answer your questions and help your organization grow.
+					</p>
+				</div>
+			</div>
+			<svg class="hs-hero-wave" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden="true">
+				<path d="M0,40 C320,100 1120,0 1440,55 L1440,100 L0,100 Z"></path>
+			</svg>
+		</header>
+
+		<!-- ============ MAIN SPLIT SECTION ============ -->
+		<main class="hs-main">
+			<div class="container">
+				<div class="row gx-4 gx-lg-5 align-items-stretch">
+
+					<!-- ===== LEFT: CONTACT INFO CARD ===== -->
+					<div class="col-lg-5 mb-4 mb-lg-0 order-1">
+						<div class="hs-info-card hover-lift fade-in-up">
+							<div class="hs-info-illustration" aria-hidden="true">
+								<svg viewBox="0 0 240 160" xmlns="http://www.w3.org/2000/svg">
+									<!-- simple HR / synergy themed illustration: connected people nodes -->
+									<circle cx="60" cy="60" r="22" class="illus-node-fill" />
+									<circle cx="150" cy="40" r="16" class="illus-node-fill-alt" />
+									<circle cx="180" cy="100" r="20" class="illus-node-fill" />
+									<circle cx="90" cy="115" r="14" class="illus-node-fill-alt" />
+									<line x1="60" y1="60" x2="150" y2="40" class="illus-line" />
+									<line x1="60" y1="60" x2="90" y2="115" class="illus-line" />
+									<line x1="150" y1="40" x2="180" y2="100" class="illus-line" />
+									<line x1="90" y1="115" x2="180" y2="100" class="illus-line" />
+									<line x1="60" y1="60" x2="180" y2="100" class="illus-line illus-line-soft" />
+								</svg>
+							</div>
+
+							<h2 class="hs-info-title">Contact Information</h2>
+							<p class="hs-info-lead">Reach out through any channel below — our team typically responds
+								within one business day.</p>
+
+							<ul class="hs-info-list">
+								<li class="hs-info-item">
+									<span class="hs-info-icon"><i class="fa-solid fa-location-dot"></i></span>
+									<div>
+										<span class="hs-info-label">Company Address</span>
+										<span class="hs-info-value">4th Floor, Synergy Towers, Vibhuti Khand, Gomti
+											Nagar, Lucknow, Uttar Pradesh 226010</span>
+									</div>
+								</li>
+								<li class="hs-info-item">
+									<span class="hs-info-icon"><i class="fa-solid fa-envelope"></i></span>
+									<div>
+										<span class="hs-info-label">Email Address</span>
+										<span class="hs-info-value">support&#64;hrsynergy.com</span>
+									</div>
+								</li>
+								<li class="hs-info-item">
+									<span class="hs-info-icon"><i class="fa-solid fa-phone"></i></span>
+									<div>
+										<span class="hs-info-label">Phone Number</span>
+										<span class="hs-info-value">+91 522 456 7890</span>
+									</div>
+								</li>
+								<li class="hs-info-item">
+									<span class="hs-info-icon"><i class="fa-solid fa-clock"></i></span>
+									<div>
+										<span class="hs-info-label">Working Hours</span>
+										<span class="hs-info-value">Mon – Sat, 9:30 AM – 6:30 PM IST</span>
+									</div>
+								</li>
+							</ul>
+
+							<div class="hs-info-social">
+								<a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+								<a href="#" aria-label="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
+								<a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+							</div>
+						</div>
+					</div>
+
+					<!-- ===== RIGHT: ENQUIRY FORM ===== -->
+					<div class="col-lg-7 order-2">
+						<div class="hs-form-card hover-lift fade-in-up delay-1">
+
+							<!-- Success Message -->
+							<div th:if="${success}" class="hs-alert-success" role="alert">
+								<i class="fa-solid fa-circle-check"></i>
+								<span th:text="${success}">Your enquiry has been submitted successfully!</span>
+							</div>
+
+							<div class="hs-form-header">
+								<h2>Send Us an Enquiry</h2>
+								<p>Fill in the form below and our team will get back to you shortly.</p>
+							</div>
+
+							<form th:action="@{/enquiry}" method="post" class="hs-form" novalidate>
+
+								<div class="hs-field">
+									<i class="fa-solid fa-user hs-field-icon"></i>
+									<input type="text" class="hs-input" id="name" name="name" placeholder=" " required>
+									<label for="name">Full Name</label>
+								</div>
+
+								<div class="hs-field">
+									<i class="fa-solid fa-envelope hs-field-icon"></i>
+									<input type="email" class="hs-input" id="emailaddress" name="emailaddress"
+										placeholder=" " required>
+									<label for="emailaddress">Email Address</label>
+								</div>
+
+								<div class="hs-field">
+									<i class="fa-solid fa-phone hs-field-icon"></i>
+									<input type="tel" class="hs-input" id="contactno" name="contactno" placeholder=" "
+										required>
+									<label for="contactno">Contact Number</label>
+								</div>
+
+								<div class="hs-field">
+									<i class="fa-solid fa-tag hs-field-icon"></i>
+									<input type="text" class="hs-input" id="subject" name="subject" placeholder=" "
+										required>
+									<label for="subject">Subject</label>
+								</div>
+
+								<div class="hs-field hs-field-textarea">
+									<i class="fa-solid fa-message hs-field-icon"></i>
+									<textarea class="hs-input" id="message" name="message" placeholder=" " rows="5"
+										required></textarea>
+									<label for="message">Your Message</label>
+								</div>
+
+								<div class="hs-form-actions">
+									<button type="submit" class="hs-btn-submit">
+										<span>Submit Enquiry</span>
+										<i class="fa-solid fa-paper-plane"></i>
+									</button>
+									<a th:href="@{/}" class="hs-btn-back">
+										<i class="fa-solid fa-arrow-left"></i>
+										<span>Back to Home</span>
+									</a>
+								</div>
+							</form>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</main>
+
+		<!-- ============ WHY CONTACT US SECTION ============ -->
+		<section class="hs-why">
+			<div class="container">
+				<div class="text-center hs-why-heading fade-in-up">
+					<span class="hs-eyebrow hs-eyebrow-dark">WHY REACH OUT</span>
+					<h2>Why Contact Us?</h2>
+					<p>Whatever stage your organization is at, HR Synergy is built to support you.</p>
+				</div>
+
+				<div class="row g-4">
+					<div class="col-sm-6 col-lg-3">
+						<div class="hs-why-card hover-lift fade-in-up delay-1">
+							<div class="hs-why-icon"><i class="fa-solid fa-bolt"></i></div>
+							<h3>Fast Response</h3>
+							<p>Our support desk acknowledges every enquiry within one business day.</p>
+						</div>
+					</div>
+					<div class="col-sm-6 col-lg-3">
+						<div class="hs-why-card hover-lift fade-in-up delay-2">
+							<div class="hs-why-icon"><i class="fa-solid fa-user-tie"></i></div>
+							<h3>Professional Support</h3>
+							<p>Experienced HR consultants guide you through setup, queries, and best practices.</p>
+						</div>
+					</div>
+					<div class="col-sm-6 col-lg-3">
+						<div class="hs-why-card hover-lift fade-in-up delay-3">
+							<div class="hs-why-icon"><i class="fa-solid fa-people-group"></i></div>
+							<h3>Employee Assistance</h3>
+							<p>Dedicated help for employee onboarding, payroll, and policy related questions.</p>
+						</div>
+					</div>
+					<div class="col-sm-6 col-lg-3">
+						<div class="hs-why-card hover-lift fade-in-up delay-4">
+							<div class="hs-why-icon"><i class="fa-solid fa-briefcase"></i></div>
+							<h3>Recruitment Support</h3>
+							<p>Guidance on hiring workflows, candidate tracking, and recruitment automation.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Bootstrap Bundle -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+		<script th:src="@{js/script.js}"></script>
+	</section>
+</body>
+
+</html>

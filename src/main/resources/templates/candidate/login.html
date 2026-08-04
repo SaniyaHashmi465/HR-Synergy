@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base :: layout(~{::section})}">
+
+<section class="candidate-login-page">
+
+    <link rel="stylesheet" th:href="@{/css/candidatelogin.css}">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+    <div class="login-wrapper">
+
+        <div class="login-left" data-aos="fade-right">
+
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+
+            <div class="brand-box">
+                <i class="fa-solid fa-users-gear"></i>
+                <span>HR Synergy Careers</span>
+            </div>
+
+            <h1>Start Your Career Journey</h1>
+
+            <p>
+                Explore professional opportunities, apply for jobs and track your application
+                progress through the HR Synergy Career Portal.
+            </p>
+
+            <div class="career-glass-card">
+                <i class="fa-solid fa-rocket"></i>
+                <div>
+                    <h5>Career Growth</h5>
+                    <small>Build your future with smart opportunities.</small>
+                </div>
+            </div>
+
+            <div class="career-glass-card second-card">
+                <i class="fa-solid fa-briefcase"></i>
+                <div>
+                    <h5>Corporate Hiring</h5>
+                    <small>Apply and track jobs from one dashboard.</small>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="login-right" data-aos="zoom-in">
+
+            <div class="login-card">
+
+                <div class="login-header">
+                    <div class="login-icon">
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+
+                    <h2>Candidate Login</h2>
+
+                    <p>
+                        Welcome back! Sign in to explore career opportunities,
+                        apply for jobs, and track your applications with HR Synergy.
+                    </p>
+                </div>
+
+                <div class="alert alert-danger"
+                     th:if="${error}"
+                     th:text="${error}">
+                </div>
+
+                <form th:action="@{/candidate/login}" method="post">
+
+                    <div class="input-group-custom">
+                        <label>Email Address</label>
+
+                        <div class="input-box">
+                            <i class="fa-solid fa-envelope"></i>
+
+                            <input type="email"
+                                   name="emailaddress"
+                                   placeholder="Enter your email address"
+                                   required>
+                        </div>
+                    </div>
+
+                    <div class="input-group-custom">
+                        <label>Password</label>
+
+                        <div class="input-box">
+                            <i class="fa-solid fa-lock"></i>
+
+                            <input type="password"
+                                   name="passwd"
+                                   id="candidatePassword"
+                                   placeholder="Enter your password"
+                                   required>
+
+                            <span class="toggle-password"
+                                  onclick="toggleCandidatePassword()">
+                                <i class="fa-solid fa-eye"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="login-options">
+
+                        <label>
+                            <input type="checkbox">
+                            Remember Me
+                        </label>
+
+                        <a href="#">Forgot Password?</a>
+
+                    </div>
+
+                    <button type="submit" class="btn login-btn">
+                        <i class="fa-solid fa-right-to-bracket"></i>
+                        Login
+                    </button>
+
+                    <div class="register-link">
+                        <span>Don't have an account?</span>
+
+                        <a th:href="@{/candidate/register}">
+                            Register Now
+                        </a>
+                    </div>
+
+                </form>
+
+                <div class="security-box">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <span>
+                        Your credentials are securely protected. We never share your personal information.
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="why-login-section">
+
+        <div class="container">
+
+            <h3 class="text-center mb-4" data-aos="fade-up">
+                Why Join HR Synergy?
+            </h3>
+
+            <div class="row g-4">
+
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="why-login-card">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <h5>Career Growth</h5>
+                    </div>
+                </div>
+
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="why-login-card">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        <h5>Learning Opportunities</h5>
+                    </div>
+                </div>
+
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="why-login-card">
+                        <i class="fa-solid fa-users"></i>
+                        <h5>Professional Team</h5>
+                    </div>
+                </div>
+
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="why-login-card">
+                        <i class="fa-solid fa-money-check-dollar"></i>
+                        <h5>Competitive Salary</h5>
+                    </div>
+                </div>
+
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="why-login-card">
+                        <i class="fa-solid fa-house-laptop"></i>
+                        <h5>Flexible Work</h5>
+                    </div>
+                </div>
+
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="why-login-card">
+                        <i class="fa-solid fa-award"></i>
+                        <h5>Recognition & Rewards</h5>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--<footer class="candidate-login-footer">
+        <h4>HR Synergy</h4>
+        <p>Smart Human Resource Management System</p>
+        <small>© 2026 HR Synergy. All Rights Reserved.</small>
+    </footer>-->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script th:src="@{/js/candidatelogin.js}"></script>
+
+</section>
+</html>

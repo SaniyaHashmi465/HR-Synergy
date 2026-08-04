@@ -1,0 +1,400 @@
+/* ================================================ */
+/* EMPLOYEE LIST PAGE — HR Synergy theme              */
+/* Append to your existing style.css                  */
+/* ================================================ */
+
+.emplist-page {
+    padding: 10px 4px 50px;
+}
+
+/* HEADER BANNER */
+
+.emplist-banner {
+    position: relative;
+    background: linear-gradient(135deg, #0d6efd, #6610f2);
+    border-radius: 26px;
+    padding: 34px 36px;
+    color: #ffffff;
+    box-shadow: 0 25px 55px rgba(13, 110, 253, 0.25);
+    overflow: hidden;
+    animation: fadeInDown 0.5s ease;
+}
+
+.emplist-banner .banner-glow {
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.18), transparent 65%);
+    top: -100px;
+    right: -50px;
+}
+
+.emplist-banner .banner-icon {
+    width: 58px;
+    height: 58px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+}
+
+.emplist-banner h2 {
+    color: #ffffff;
+    position: relative;
+    z-index: 2;
+}
+
+.emplist-banner .banner-subtitle {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.96rem;
+    position: relative;
+    z-index: 2;
+}
+
+.btn-add-employee {
+    position: relative;
+    z-index: 2;
+    background: #ffffff;
+    color: #0d6efd;
+    border: none;
+    border-radius: 14px;
+    padding: 10px 22px;
+    font-weight: 700;
+    transition: 0.25s;
+}
+
+.btn-add-employee:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+    color: #0d6efd;
+}
+
+.btn-back-dashboard {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.16);
+    color: #ffffff;
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    border-radius: 14px;
+    padding: 10px 22px;
+    font-weight: 700;
+    transition: 0.25s;
+}
+
+.btn-back-dashboard:hover {
+    background: #ffffff;
+    color: #0d6efd;
+    transform: translateY(-2px);
+}
+
+/* ALERTS */
+
+.emplist-alert {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-radius: 16px;
+    padding: 14px 20px;
+    font-weight: 600;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.05);
+    animation: fadeInUp 0.4s ease;
+}
+
+.emplist-alert i {
+    font-size: 1.2rem;
+}
+
+.emplist-alert-success {
+    background: #e9f9ee;
+    color: #146c2e;
+}
+
+.emplist-alert-success i {
+    color: #1bb55c;
+}
+
+.emplist-alert-danger {
+    background: #fdeceb;
+    color: #b42318;
+}
+
+.emplist-alert-danger i {
+    color: #e0392f;
+}
+
+/* SEARCH CARD */
+
+.emplist-search-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 20px 22px;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
+    animation: fadeInUp 0.45s ease;
+}
+
+.emplist-search-form {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.search-input-group {
+    position: relative;
+    flex: 1;
+    min-width: 220px;
+}
+
+.search-input-group i {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+    font-size: 0.92rem;
+    transition: 0.25s;
+}
+
+.search-input-group:focus-within i {
+    color: #0d6efd;
+}
+
+.search-input-group .form-control {
+    border: 1.5px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 11px 16px 11px 44px;
+    font-size: 0.95rem;
+    background: #f9fafb;
+    transition: 0.25s;
+    width: 100%;
+}
+
+.search-input-group .form-control:focus {
+    border-color: #0d6efd;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.12);
+    outline: none;
+}
+
+.btn-emplist-search {
+    background: linear-gradient(135deg, #0d6efd, #6610f2);
+    color: #ffffff;
+    border: none;
+    border-radius: 14px;
+    padding: 11px 24px;
+    font-weight: 700;
+    box-shadow: 0 10px 22px rgba(13, 110, 253, 0.26);
+    transition: 0.25s;
+    white-space: nowrap;
+}
+
+.btn-emplist-search:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px rgba(13, 110, 253, 0.34);
+    color: #ffffff;
+}
+
+.btn-emplist-reset {
+    border: 1.5px solid #e5e7eb;
+    background: #ffffff;
+    color: #374151;
+    border-radius: 14px;
+    padding: 11px 22px;
+    font-weight: 700;
+    transition: 0.25s;
+    white-space: nowrap;
+}
+
+.btn-emplist-reset:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+    transform: translateY(-2px);
+}
+
+/* TABLE PANEL */
+
+.emplist-table-panel {
+    background: #ffffff;
+    border-radius: 22px;
+    padding: 26px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+    animation: fadeInUp 0.5s ease;
+}
+
+.emplist-table-header {
+    margin-bottom: 18px;
+}
+
+.emplist-table-header h4 {
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 0;
+}
+
+.table-responsive {
+    border-radius: 14px;
+}
+
+.emplist-table-panel table thead th {
+    background: linear-gradient(135deg, #0d6efd, #6610f2);
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.84rem;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    border: none;
+    padding: 14px 16px;
+    white-space: nowrap;
+}
+
+.emplist-table-panel table tbody td {
+    padding: 14px 16px;
+    font-size: 0.9rem;
+    color: #374151;
+    vertical-align: middle;
+    border-color: #f1f5f9;
+}
+
+.emplist-table-panel table tbody tr {
+    transition: 0.2s;
+}
+
+.emplist-table-panel table tbody tr:hover {
+    background: #f8fafc;
+}
+
+.email-cell {
+    color: #2563eb;
+    font-weight: 500;
+}
+
+.salary-cell {
+    font-weight: 800;
+    color: #16a34a;
+}
+
+/* ACTION BUTTONS */
+
+.btn-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: #ffffff;
+    text-decoration: none;
+    border: none;
+    transition: 0.25s;
+    white-space: nowrap;
+}
+
+.btn-action:hover {
+    transform: translateY(-2px);
+    color: #ffffff;
+}
+
+.btn-edit {
+    background: linear-gradient(135deg, #d97706, #f59e0b);
+    box-shadow: 0 8px 18px rgba(217, 119, 6, 0.3);
+}
+
+.btn-edit:hover {
+    box-shadow: 0 12px 24px rgba(217, 119, 6, 0.4);
+}
+
+.btn-delete {
+    background: linear-gradient(135deg, #dc2626, #ef4444);
+    box-shadow: 0 8px 18px rgba(220, 38, 38, 0.3);
+}
+
+.btn-delete:hover {
+    box-shadow: 0 12px 24px rgba(220, 38, 38, 0.4);
+}
+
+/* ANIMATIONS */
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+    .emplist-banner {
+        padding: 26px 22px;
+        text-align: center;
+    }
+
+    .emplist-banner .d-flex.justify-content-between {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .emplist-banner .d-flex.gap-2 {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .emplist-search-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-input-group {
+        min-width: 100%;
+    }
+
+    .btn-emplist-search,
+    .btn-emplist-reset {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .emplist-table-panel {
+        padding: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .emplist-page {
+        padding: 6px 0 40px;
+    }
+
+    .btn-add-employee,
+    .btn-back-dashboard {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .btn-action {
+        padding: 6px 10px;
+        font-size: 0.74rem;
+    }
+}

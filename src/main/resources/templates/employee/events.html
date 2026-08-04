@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base :: layout(~{::section})}">
+
+<section>
+
+<div class="empevents-page">
+
+    <!-- HEADER BANNER -->
+    <div class="empevents-banner mb-4">
+        <div class="banner-glow"></div>
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+            <div class="d-flex align-items-center gap-3">
+                <div class="banner-icon">
+                    <i class="fa-solid fa-calendar-days"></i>
+                </div>
+                <div>
+                    <h2 class="fw-bold mb-1">Company Events</h2>
+                    <p class="mb-0 banner-subtitle">Stay updated with latest company events and announcements</p>
+                </div>
+            </div>
+
+            <a th:href="@{/employee/dashboard}" class="btn btn-back-dashboard">
+                <i class="fa-solid fa-arrow-left me-2"></i>Back to Dashboard
+            </a>
+        </div>
+    </div>
+
+    <!-- EMPTY STATE (shown only when there are no events; no backend logic changed) -->
+    <div th:if="${#lists.isEmpty(events)}" class="empevents-empty-state">
+        <i class="fa-solid fa-calendar-xmark"></i>
+        <h4>No Events Yet</h4>
+        <p>There are no company events to show right now. Check back soon for updates.</p>
+    </div>
+
+    <!-- EVENT GRID -->
+    <div class="row g-4" th:unless="${#lists.isEmpty(events)}">
+
+        <div class="col-lg-6 col-md-6" th:each="event : ${events}">
+            <div class="empevents-card fade-in-up">
+
+                <div class="empevents-card-top">
+                    <i class="fa-solid fa-calendar-days"></i>
+                </div>
+
+                <div class="empevents-card-body">
+
+                    <h5 class="empevents-title">
+                        <i class="fa-solid fa-calendar-check"></i>
+                        <span th:text="${event.eventtitle}"></span>
+                    </h5>
+
+                    <div class="empevents-date">
+                        <i class="fa-solid fa-clock"></i>
+                        <span th:text="${event.eventdate}"></span>
+                    </div>
+
+                    <div class="empevents-desc">
+                        <i class="fa-solid fa-file-lines"></i>
+                        <span th:text="${event.eventdescription}"></span>
+                    </div>
+
+                </div>
+
+                <div class="empevents-card-footer">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <span>Posted on <span th:text="${event.posteddate}"></span></span>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+</html>

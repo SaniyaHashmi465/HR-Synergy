@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base :: layout(~{::section})}">
+
+<section>
+
+<div class="editevent-page">
+
+    <!-- HEADER BANNER -->
+    <div class="editevent-banner mb-4">
+        <div class="banner-glow"></div>
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+            <div class="d-flex align-items-center gap-3">
+                <div class="banner-icon">
+                    <i class="fa-solid fa-calendar-pen"></i>
+                </div>
+                <div>
+                    <h2 class="fw-bold mb-1">Edit Event</h2>
+                    <p class="mb-0 banner-subtitle">Update company event details and schedule</p>
+                </div>
+            </div>
+
+            <a th:href="@{/admin/viewevents}" class="btn btn-back-events">
+                <i class="fa-solid fa-arrow-left me-2"></i>Back to Events
+            </a>
+        </div>
+    </div>
+
+    <div class="editevent-wrapper">
+
+        <!-- FORM CARD -->
+        <div class="editevent-card">
+
+            <div class="editevent-card-header">
+                <h4><i class="fa-solid fa-calendar-days me-2"></i>Event Update Form</h4>
+            </div>
+
+            <!-- INFO PANEL -->
+            <div class="editevent-info-panel mb-4">
+                <i class="fa-solid fa-calendar-check"></i>
+                <span>Updated event details will be visible to employees.</span>
+            </div>
+
+            <form th:action="@{/admin/updateevent}" method="post" class="editevent-form">
+
+                <input type="hidden" name="eventid" th:value="${event.eventid}">
+                <input type="hidden" name="posteddate" th:value="${event.posteddate}">
+
+                <!-- Event Title -->
+                <div class="mb-4">
+                    <label class="form-label">Event Title</label>
+                    <div class="input-icon-group">
+                        <i class="fa-solid fa-heading"></i>
+                        <input type="text"
+                               name="eventtitle"
+                               class="form-control"
+                               th:value="${event.eventtitle}"
+                               placeholder="Enter event title"
+                               required>
+                    </div>
+                </div>
+
+                <!-- Event Date -->
+                <div class="mb-4">
+                    <label class="form-label">Event Date</label>
+                    <div class="input-icon-group">
+                        <i class="fa-solid fa-calendar-day"></i>
+                        <input type="date"
+                               name="eventdate"
+                               class="form-control"
+                               th:value="${event.eventdate}"
+                               required>
+                    </div>
+                </div>
+
+                <!-- Event Description -->
+                <div class="mb-4">
+                    <label class="form-label">Event Description</label>
+                    <div class="input-icon-group textarea-icon-group">
+                        <i class="fa-solid fa-align-left"></i>
+                        <textarea name="eventdescription"
+                                  class="form-control"
+                                  rows="5"
+                                  placeholder="Describe the event details"
+                                  th:text="${event.eventdescription}"
+                                  required></textarea>
+                    </div>
+                </div>
+
+                <!-- FORM ACTIONS -->
+                <div class="editevent-actions">
+                    <a th:href="@{/admin/viewevents}" class="btn btn-editevent-back">
+                        <i class="fa-solid fa-arrow-left me-2"></i>Back
+                    </a>
+                    <button type="submit" class="btn btn-editevent-save">
+                        <i class="fa-solid fa-floppy-disk me-2"></i>Update Event
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+</html>

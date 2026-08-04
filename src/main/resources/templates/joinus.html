@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base :: layout(~{::section})}">
+
+<section class="joinus-page">
+
+    <!-- Page CSS -->
+    <link rel="stylesheet" th:href="@{/css/joinus.css}">
+
+    <!-- Font Awesome + AOS -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+    <!-- Hero Section -->
+    <div class="join-hero">
+        <div class="container">
+            <div class="row align-items-center g-5">
+
+                <div class="col-lg-6" data-aos="fade-right">
+                    <span class="hero-badge">
+                        <i class="fa-solid fa-briefcase"></i>
+                        Careers at HR Synergy
+                    </span>
+
+                    <h1>
+                        Join Our Amazing Team
+                    </h1>
+
+                    <p>
+                        Build your career with HR Synergy. We are looking for passionate,
+                        talented, and innovative people who want to make an impact.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a href="#currentJobs" class="btn btn-join-primary">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            View Jobs
+                        </a>
+
+                        <a th:href="@{/candidate/register}" class="btn btn-join-outline">
+                            <i class="fa-solid fa-user-plus"></i>
+                            Register Now
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="hero-image-box">
+                        <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=80"
+                             alt="Career Team"
+                             class="hero-image">
+
+                        <div class="floating-card card-one">
+                            <i class="fa-solid fa-chart-line"></i>
+                            Career Growth
+                        </div>
+
+                        <div class="floating-card card-two">
+                            <i class="fa-solid fa-users"></i>
+                            Team Culture
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Why Join Us -->
+    <div class="section-block">
+        <div class="container">
+
+            <div class="section-title" data-aos="fade-up">
+                <span>Why Join Us</span>
+                <h2>Grow your career with confidence</h2>
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-md-4" data-aos="zoom-in">
+                    <div class="feature-card">
+                        <i class="fa-solid fa-arrow-trend-up"></i>
+                        <h4>Career Growth</h4>
+                        <p>Clear growth opportunities with continuous mentorship.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4" data-aos="zoom-in">
+                    <div class="feature-card">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        <h4>Learning Opportunities</h4>
+                        <p>Improve your skills with training and real projects.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4" data-aos="zoom-in">
+                    <div class="feature-card">
+                        <i class="fa-solid fa-house-laptop"></i>
+                        <h4>Flexible Working</h4>
+                        <p>Balanced work environment with productivity focus.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4" data-aos="zoom-in">
+                    <div class="feature-card">
+                        <i class="fa-solid fa-handshake"></i>
+                        <h4>Friendly Environment</h4>
+                        <p>Collaborative and supportive professional culture.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4" data-aos="zoom-in">
+                    <div class="feature-card">
+                        <i class="fa-solid fa-sack-dollar"></i>
+                        <h4>Competitive Salary</h4>
+                        <p>Fair compensation based on role and performance.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4" data-aos="zoom-in">
+                    <div class="feature-card">
+                        <i class="fa-solid fa-award"></i>
+                        <h4>Recognition & Rewards</h4>
+                        <p>Your hard work and achievements are appreciated.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Current Jobs -->
+    <div class="section-block light-bg" id="currentJobs">
+        <div class="container">
+
+            <div class="section-title" data-aos="fade-up">
+                <span>Open Positions</span>
+                <h2>Current Job Openings</h2>
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-lg-4 col-md-6"
+                     th:each="job : ${jobs}"
+                     data-aos="fade-up">
+
+                    <div class="job-card">
+
+                        <div class="job-icon">
+                            <i class="fa-solid fa-briefcase"></i>
+                        </div>
+
+                        <h4 th:text="${job.jobprofile}">Java Developer</h4>
+
+                        <p class="job-description"
+                           th:text="${job.description}">
+                            Job description here.
+                        </p>
+
+                        <ul>
+                            <li>
+                                <i class="fa-solid fa-graduation-cap"></i>
+                                <strong>Qualification:</strong>
+                                <span th:text="${job.qualification}"></span>
+                            </li>
+
+                            <li>
+                                <i class="fa-solid fa-user-clock"></i>
+                                <strong>Experience:</strong>
+                                <span th:text="${job.experience}"></span>
+                            </li>
+
+                            <li>
+                                <i class="fa-solid fa-users"></i>
+                                <strong>Vacancies:</strong>
+                                <span th:text="${job.noofvacancy}"></span>
+                            </li>
+
+                            <li>
+                                <i class="fa-solid fa-calendar-days"></i>
+                                <strong>Posted:</strong>
+                                <span th:text="${job.posteddate}"></span>
+                            </li>
+                        </ul>
+
+                        <a th:href="@{/candidate/login}"
+                           class="btn btn-apply">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            Apply Now
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Hiring Process -->
+    <div class="section-block">
+        <div class="container">
+
+            <div class="section-title" data-aos="fade-up">
+                <span>Hiring Process</span>
+                <h2>Simple and transparent recruitment</h2>
+            </div>
+
+            <div class="process-wrapper">
+
+                <div class="process-card" data-aos="fade-up">
+                    <span>01</span>
+                    <i class="fa-solid fa-file-pen"></i>
+                    <h5>Apply Online</h5>
+                </div>
+
+                <div class="process-card" data-aos="fade-up">
+                    <span>02</span>
+                    <i class="fa-solid fa-file-circle-check"></i>
+                    <h5>Resume Screening</h5>
+                </div>
+
+                <div class="process-card" data-aos="fade-up">
+                    <span>03</span>
+                    <i class="fa-solid fa-laptop-code"></i>
+                    <h5>Technical Interview</h5>
+                </div>
+
+                <div class="process-card" data-aos="fade-up">
+                    <span>04</span>
+                    <i class="fa-solid fa-user-tie"></i>
+                    <h5>HR Interview</h5>
+                </div>
+
+                <div class="process-card" data-aos="fade-up">
+                    <span>05</span>
+                    <i class="fa-solid fa-envelope-open-text"></i>
+                    <h5>Offer Letter</h5>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Benefits -->
+    <div class="section-block light-bg">
+        <div class="container">
+
+            <div class="section-title" data-aos="fade-up">
+                <span>Benefits</span>
+                <h2>Employee benefits designed for you</h2>
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-md-3 col-sm-6" data-aos="zoom-in">
+                    <div class="benefit-card">
+                        <i class="fa-solid fa-scale-balanced"></i>
+                        <h5>Work-Life Balance</h5>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6" data-aos="zoom-in">
+                    <div class="benefit-card">
+                        <i class="fa-solid fa-user-graduate"></i>
+                        <h5>Career Development</h5>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6" data-aos="zoom-in">
+                    <div class="benefit-card">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                        <h5>Medical Insurance</h5>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6" data-aos="zoom-in">
+                    <div class="benefit-card">
+                        <i class="fa-solid fa-plane-departure"></i>
+                        <h5>Paid Leave</h5>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6" data-aos="zoom-in">
+                    <div class="benefit-card">
+                        <i class="fa-solid fa-chalkboard-user"></i>
+                        <h5>Training Programs</h5>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6" data-aos="zoom-in">
+                    <div class="benefit-card">
+                        <i class="fa-solid fa-gift"></i>
+                        <h5>Performance Bonus</h5>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6" data-aos="zoom-in">
+                    <div class="benefit-card">
+                        <i class="fa-solid fa-laptop-house"></i>
+                        <h5>Remote Work</h5>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6" data-aos="zoom-in">
+                    <div class="benefit-card">
+                        <i class="fa-solid fa-calendar-check"></i>
+                        <h5>Annual Events</h5>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonials -->
+    <div class="section-block">
+        <div class="container">
+
+            <div class="section-title" data-aos="fade-up">
+                <span>Testimonials</span>
+                <h2>Why candidates love HR Synergy</h2>
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p>“A professional environment where learning and growth are always encouraged.”</p>
+                        <h5>Priya Sharma</h5>
+                        <span>Software Engineer</span>
+                    </div>
+                </div>
+
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p>“The hiring process was smooth, transparent, and candidate-friendly.”</p>
+                        <h5>Rahul Verma</h5>
+                        <span>HR Associate</span>
+                    </div>
+                </div>
+
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p>“Great team culture, supportive mentors, and excellent career opportunities.”</p>
+                        <h5>Anjali Singh</h5>
+                        <span>Business Analyst</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Statistics -->
+    <div class="stats-section">
+        <div class="container">
+            <div class="row text-center g-4">
+
+                <div class="col-md-3 col-6">
+                    <h2 class="counter" data-target="100">0</h2>
+                    <p>Employees</p>
+                </div>
+
+                <div class="col-md-3 col-6">
+                    <h2 class="counter" data-target="25">0</h2>
+                    <p>Departments</p>
+                </div>
+
+                <div class="col-md-3 col-6">
+                    <h2 class="counter" data-target="500">0</h2>
+                    <p>Successful Hires</p>
+                </div>
+
+                <div class="col-md-3 col-6">
+                    <h2 class="counter" data-target="98">0</h2>
+                    <p>Employee Satisfaction</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="career-cta">
+        <div class="container text-center">
+            <h2>Ready to Start Your Career?</h2>
+            <p>Join HR Synergy today and become part of an innovative organization.</p>
+
+            <a href="#currentJobs" class="btn btn-cta-light">
+                View Jobs
+            </a>
+
+            <a th:href="@{/candidate/login}" class="btn btn-cta-outline">
+                Apply Now
+            </a>
+
+            <a th:href="@{/candidate/register}" class="btn btn-cta-light">
+                Register
+            </a>
+        </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="section-block">
+        <div class="container">
+
+            <div class="section-title" data-aos="fade-up">
+                <span>FAQ</span>
+                <h2>Frequently Asked Questions</h2>
+            </div>
+
+            <div class="accordion" id="careerFaq">
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                            How do I apply?
+                        </button>
+                    </h2>
+                    <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#careerFaq">
+                        <div class="accordion-body">
+                            Register as a candidate, login, view jobs, and click Apply Now.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq2">
+                            Can freshers apply?
+                        </button>
+                    </h2>
+                    <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#careerFaq">
+                        <div class="accordion-body">
+                            Yes, freshers can apply for suitable openings.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq3">
+                            Is experience required?
+                        </button>
+                    </h2>
+                    <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#careerFaq">
+                        <div class="accordion-body">
+                            It depends on the job profile and opening requirements.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact HR -->
+    <div class="contact-hr">
+        <div class="container">
+            <div class="row g-4 align-items-center">
+
+                <div class="col-md-6">
+                    <h2>Contact HR</h2>
+                    <p>Have questions about career opportunities? Reach out to our HR team.</p>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="contact-card">
+                        <p><i class="fa-solid fa-envelope"></i> hr@hrsynergy.com</p>
+                        <p><i class="fa-solid fa-phone"></i> +91 98765 43210</p>
+                        <p><i class="fa-solid fa-location-dot"></i> Lucknow, Uttar Pradesh</p>
+                        <p><i class="fa-solid fa-clock"></i> Mon - Sat, 10:00 AM - 6:00 PM</p>
+
+                        <div class="social-icons">
+                            <i class="fa-brands fa-linkedin"></i>
+                            <i class="fa-brands fa-facebook"></i>
+                            <i class="fa-brands fa-instagram"></i>
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script th:src="@{/js/joinus.js}"></script>
+
+</section>
+</html>

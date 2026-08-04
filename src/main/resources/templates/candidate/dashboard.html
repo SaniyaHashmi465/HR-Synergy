@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base :: layout(~{::section})}">
+
+<section>
+
+<div class="cd-root">
+
+    <!-- MOBILE OVERLAY -->
+    <div class="cd-overlay" id="cdOverlay"></div>
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="cd-sidebar" id="cdSidebar">
+
+        <!-- Brand -->
+        <div class="cd-brand">
+            <div class="cd-brand-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <div>
+                <span class="cd-brand-title">HR Synergy</span>
+                <small class="cd-brand-sub">Candidate Portal</small>
+            </div>
+        </div>
+
+        <!-- Profile area -->
+        <div class="cd-profile-area">
+            <div class="cd-avatar"><i class="fa-solid fa-user"></i></div>
+            <p class="cd-welcome-text">Welcome Candidate</p>
+            <span class="cd-active-badge"><i class="fa-solid fa-circle-check"></i> Active Candidate</span>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="cd-nav">
+            <span class="cd-nav-label">Navigation</span>
+
+            <a href="#" class="cd-nav-link active">
+                <i class="fa-solid fa-gauge"></i> Dashboard
+            </a>
+
+            <a th:href="@{/candidate/jobs}" class="cd-nav-link">
+                <i class="fa-solid fa-briefcase"></i> Available Jobs
+            </a>
+
+            <a th:href="@{/candidate/applications}" class="cd-nav-link">
+                <i class="fa-solid fa-clipboard-list"></i> My Applications
+            </a>
+
+            <a th:href="@{/candidate/profile}" class="cd-nav-link">
+                <i class="fa-solid fa-address-card"></i> My Profile
+            </a>
+
+            <a th:href="@{/candidate/editprofile}" class="cd-nav-link">
+                <i class="fa-solid fa-user-pen"></i> Edit Profile
+            </a>
+
+            <a th:href="@{/candidate/updateresume}" class="cd-nav-link">
+                <i class="fa-solid fa-file-arrow-up"></i> Update Resume
+            </a>
+
+            <a th:href="@{/candidate/changepassword}" class="cd-nav-link">
+                <i class="fa-solid fa-key"></i> Change Password
+            </a>
+        </nav>
+
+        <div class="cd-sidebar-divider"></div>
+
+        <a th:href="@{/candidate/logout}" class="cd-logout-link">
+            <i class="fa-solid fa-right-from-bracket"></i> Logout
+        </a>
+
+    </aside>
+
+    <!-- ===== MAIN PANEL ===== -->
+    <main class="cd-main">
+
+        <!-- TOP HEADER -->
+        <div class="cd-topbar">
+            <div class="cd-topbar-left">
+                <button class="cd-toggle-btn" id="cdToggleBtn" aria-label="Toggle sidebar">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <div>
+                    <h5 class="cd-topbar-title">Candidate Dashboard</h5>
+                    <p class="cd-topbar-sub">Manage your career journey</p>
+                </div>
+            </div>
+            <div class="cd-topbar-right">
+                <button class="cd-icon-btn"><i class="fa-solid fa-bell"></i></button>
+                <div class="cd-topbar-profile">
+                    <div class="cd-topbar-avatar"><i class="fa-solid fa-user"></i></div>
+                    <span class="d-none d-md-inline">Welcome Candidate</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- WELCOME BANNER -->
+        <div class="cd-welcome-banner">
+            <div class="cd-banner-glow"></div>
+            <div class="cd-banner-shapes">
+                <span class="cd-shape cd-shape-1"></span>
+                <span class="cd-shape cd-shape-2"></span>
+                <span class="cd-shape cd-shape-3"></span>
+            </div>
+            <div class="cd-banner-content">
+                <div class="cd-banner-text">
+                    <span class="cd-banner-badge"><i class="fa-solid fa-star me-1"></i>Career Portal</span>
+                    <h2>Welcome to HR Synergy<br>Career Portal</h2>
+                    <p>Explore job opportunities, manage your profile, update your resume, and track all your applications from one dashboard.</p>
+                    <div class="cd-banner-btns">
+                        <a th:href="@{/candidate/jobs}" class="btn cd-btn-primary">
+                            <i class="fa-solid fa-briefcase me-2"></i>Browse Jobs
+                        </a>
+                        <a th:href="@{/candidate/applications}" class="btn cd-btn-outline">
+                            <i class="fa-solid fa-clipboard-list me-2"></i>My Applications
+                        </a>
+                    </div>
+                </div>
+                <div class="cd-banner-illustration">
+                    <div class="cd-banner-illo-card">
+                        <div class="cd-illo-icon"><i class="fa-solid fa-rocket"></i></div>
+                        <div class="cd-illo-text">
+                            <p class="cd-illo-label">Career Growth</p>
+                            <span class="cd-illo-sub">Track your journey</span>
+                        </div>
+                    </div>
+                    <div class="cd-banner-illo-card cd-illo-card-2">
+                        <div class="cd-illo-icon cd-illo-green"><i class="fa-solid fa-check-double"></i></div>
+                        <div class="cd-illo-text">
+                            <p class="cd-illo-label">Applications</p>
+                            <span class="cd-illo-sub">Manage with ease</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STATISTICS CARDS -->
+        <div class="row g-4 mb-4">
+
+            <div class="col-xl-3 col-md-6">
+                <div class="cd-stat-card fade-in-up">
+                    <div class="cd-stat-icon cd-ic-blue">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </div>
+                    <div>
+                        <h3 class="cd-stat-num">—</h3>
+                        <p class="cd-stat-label">Available Jobs</p>
+                        <small class="cd-stat-desc">Browse open positions</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6">
+                <div class="cd-stat-card fade-in-up">
+                    <div class="cd-stat-icon cd-ic-amber">
+                        <i class="fa-solid fa-clipboard-check"></i>
+                    </div>
+                    <div>
+                        <h3 class="cd-stat-num">—</h3>
+                        <p class="cd-stat-label">Applications Submitted</p>
+                        <small class="cd-stat-desc">Track your submissions</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6">
+                <div class="cd-stat-card fade-in-up">
+                    <div class="cd-stat-icon cd-ic-green">
+                        <i class="fa-solid fa-user-check"></i>
+                    </div>
+                    <div>
+                        <h3 class="cd-stat-num">Active</h3>
+                        <p class="cd-stat-label">Profile Status</p>
+                        <small class="cd-stat-desc">Your profile is live</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6">
+                <div class="cd-stat-card fade-in-up">
+                    <div class="cd-stat-icon cd-ic-purple">
+                        <i class="fa-solid fa-file-circle-check"></i>
+                    </div>
+                    <div>
+                        <h3 class="cd-stat-num">Updated</h3>
+                        <p class="cd-stat-label">Resume Status</p>
+                        <small class="cd-stat-desc">Resume on record</small>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- MODULE CARDS -->
+        <div class="cd-section-title mb-3">
+            <h4><i class="fa-solid fa-layer-group me-2"></i>Quick Actions</h4>
+        </div>
+
+        <div class="row g-4 mb-4">
+
+            <div class="col-xl-3 col-md-6">
+                <div class="cd-module-card fade-in-up">
+                    <div class="cd-module-icon cd-mic-blue">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </div>
+                    <h5>Available Jobs</h5>
+                    <p>Explore current vacancies and apply for suitable positions.</p>
+                    <a th:href="@{/candidate/jobs}" class="btn cd-module-btn cd-mbtn-blue">
+                        View Jobs
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6">
+                <div class="cd-module-card fade-in-up">
+                    <div class="cd-module-icon cd-mic-amber">
+                        <i class="fa-solid fa-clipboard-list"></i>
+                    </div>
+                    <h5>My Applications</h5>
+                    <p>Track your submitted applications and recruitment status.</p>
+                    <a th:href="@{/candidate/applications}" class="btn cd-module-btn cd-mbtn-amber">
+                        View Applications
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6">
+                <div class="cd-module-card fade-in-up">
+                    <div class="cd-module-icon cd-mic-teal">
+                        <i class="fa-solid fa-address-card"></i>
+                    </div>
+                    <h5>My Profile</h5>
+                    <p>View your personal details, qualifications, experience, skills, and resume.</p>
+                    <a th:href="@{/candidate/profile}" class="btn cd-module-btn cd-mbtn-teal">
+                        View Profile
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6">
+                <div class="cd-module-card fade-in-up">
+                    <div class="cd-module-icon cd-mic-purple">
+                        <i class="fa-solid fa-user-pen"></i>
+                    </div>
+                    <h5>Edit Profile</h5>
+                    <p>Update your personal details, contact information, qualification, experience, and skills.</p>
+                    <a th:href="@{/candidate/editprofile}" class="btn cd-module-btn cd-mbtn-purple">
+                        Edit Profile
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6">
+                <div class="cd-module-card fade-in-up">
+                    <div class="cd-module-icon cd-mic-green">
+                        <i class="fa-solid fa-file-arrow-up"></i>
+                    </div>
+                    <h5>Update Resume</h5>
+                    <p>Upload your latest professional resume for recruiters.</p>
+                    <a th:href="@{/candidate/updateresume}" class="btn cd-module-btn cd-mbtn-green">
+                        Update Resume
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6">
+                <div class="cd-module-card fade-in-up">
+                    <div class="cd-module-icon cd-mic-indigo">
+                        <i class="fa-solid fa-key"></i>
+                    </div>
+                    <h5>Change Password</h5>
+                    <p>Improve account security by changing your password.</p>
+                    <a th:href="@{/candidate/changepassword}" class="btn cd-module-btn cd-mbtn-indigo">
+                        Change Password
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6">
+                <div class="cd-module-card fade-in-up">
+                    <div class="cd-module-icon cd-mic-red">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                    </div>
+                    <h5>Logout</h5>
+                    <p>Securely end the current candidate session.</p>
+                    <a th:href="@{/candidate/logout}" class="btn cd-module-btn cd-mbtn-red">
+                        Logout
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- BOTTOM ROW: Timeline + Tips + Activity + Support -->
+        <div class="row g-4 mb-4">
+
+            <!-- APPLICATION PROGRESS TIMELINE -->
+            <div class="col-lg-8">
+                <div class="cd-panel">
+                    <div class="cd-panel-header">
+                        <h5><i class="fa-solid fa-timeline me-2"></i>Application Progress</h5>
+                        <small>Typical recruitment stages</small>
+                    </div>
+
+                    <div class="cd-timeline">
+                        <div class="cd-timeline-track"></div>
+
+                        <div class="cd-tstep cd-step-done">
+                            <div class="cd-tstep-icon"><i class="fa-solid fa-paper-plane"></i></div>
+                            <p>Application<br>Submitted</p>
+                        </div>
+
+                        <div class="cd-tstep">
+                            <div class="cd-tstep-icon"><i class="fa-solid fa-file-magnifying-glass"></i></div>
+                            <p>Resume<br>Review</p>
+                        </div>
+
+                        <div class="cd-tstep">
+                            <div class="cd-tstep-icon"><i class="fa-solid fa-star"></i></div>
+                            <p>Shortlisted</p>
+                        </div>
+
+                        <div class="cd-tstep">
+                            <div class="cd-tstep-icon"><i class="fa-solid fa-comments"></i></div>
+                            <p>Interview</p>
+                        </div>
+
+                        <div class="cd-tstep">
+                            <div class="cd-tstep-icon"><i class="fa-solid fa-handshake"></i></div>
+                            <p>Hired</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- CAREER TIPS -->
+            <div class="col-lg-4">
+                <div class="cd-panel">
+                    <div class="cd-panel-header">
+                        <h5><i class="fa-solid fa-lightbulb me-2"></i>Career Tips</h5>
+                    </div>
+
+                    <ul class="cd-tips-list">
+                        <li><i class="fa-solid fa-check-circle"></i> Keep your resume updated</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Complete your profile fully</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Apply for suitable roles only</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Prepare for technical interviews</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Check application status regularly</li>
+                    </ul>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row g-4 mb-4">
+
+            <!-- RECENT ACTIVITY -->
+            <div class="col-lg-8">
+                <div class="cd-panel">
+                    <div class="cd-panel-header">
+                        <h5><i class="fa-solid fa-clock-rotate-left me-2"></i>Recent Activity</h5>
+                    </div>
+
+                    <ul class="cd-activity-list">
+                        <li>
+                            <div class="cd-act-icon cd-ic-blue"><i class="fa-solid fa-eye"></i></div>
+                            <div>
+                                <p class="cd-act-title">Profile Viewed</p>
+                                <small>Your profile was recently viewed by a recruiter</small>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="cd-act-icon cd-ic-green"><i class="fa-solid fa-file-arrow-up"></i></div>
+                            <div>
+                                <p class="cd-act-title">Resume Updated</p>
+                                <small>Your resume is on record and visible to recruiters</small>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="cd-act-icon cd-ic-amber"><i class="fa-solid fa-paper-plane"></i></div>
+                            <div>
+                                <p class="cd-act-title">Application Submitted</p>
+                                <small>You have submitted job applications</small>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="cd-act-icon cd-ic-purple"><i class="fa-solid fa-briefcase"></i></div>
+                            <div>
+                                <p class="cd-act-title">New Jobs Posted</p>
+                                <small>New positions are available — browse now</small>
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+
+            <!-- SUPPORT CARD -->
+            <div class="col-lg-4">
+                <div class="cd-support-card">
+                    <div class="cd-support-icon"><i class="fa-solid fa-headset"></i></div>
+                    <h5>Recruitment Support</h5>
+                    <p>Need help with your application or profile?</p>
+
+                    <ul class="cd-support-list">
+                        <li><i class="fa-solid fa-envelope"></i> support@hrsynergy.com</li>
+                        <li><i class="fa-solid fa-phone"></i> +91-XXXXX-XXXXX</li>
+                        <li><i class="fa-solid fa-clock"></i> Mon–Fri, 9 AM – 6 PM</li>
+                    </ul>
+
+                    <a th:href="@{/candidate/jobs}" class="btn cd-btn-primary w-100 mt-3">
+                        <i class="fa-solid fa-briefcase me-2"></i>Browse Jobs
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script th:src="@{/js/candidatedashboard.js}"></script>
+
+</section>
+
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base :: layout(~{::section})}">
+
+<section>
+
+    <!-- HERO -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center g-5">
+
+                <div class="col-lg-6 animate-left">
+                    <span class="section-badge">Modern HRMS Solution</span>
+
+                    <h1>
+                        Manage Your Human Resources Smarter
+                    </h1>
+
+                    <p>
+                        HR Synergy is a smart Human Resource Management System
+                        for employee management, attendance, leave, payroll,
+                        recruitment, feedback and performance tracking.
+                    </p>
+
+                    <div class="d-flex gap-3 flex-wrap">
+                        <a th:href="@{/login}" class="btn btn-primary btn-lg rounded-pill px-4">
+                            Login Now
+                        </a>
+
+                        <a th:href="@{/jobs}" class="btn btn-outline-primary btn-lg rounded-pill px-4">
+                            View Jobs
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 animate-right">
+                    <div class="main-image-card">
+                        <img th:src="@{/images/hrms-banner.jpeg}" alt="HRMS Banner">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row g-4">
+
+                <div class="col-md-3 col-6">
+                    <div class="stats-card animate-up">
+                        <i class="fa-solid fa-laptop-code stats-icon"></i>
+                        <h3>100%</h3>
+                        <p>Digital Process</p>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-6">
+                    <div class="stats-card animate-up">
+                        <i class="fa-solid fa-clock stats-icon"></i>
+                        <h3>24/7</h3>
+                        <p>Employee Access</p>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-6">
+                    <div class="stats-card animate-up">
+                        <i class="fa-solid fa-shield-halved stats-icon"></i>
+                        <h3>Secure</h3>
+                        <p>Role Login</p>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-6">
+                    <div class="stats-card animate-up">
+                        <i class="fa-solid fa-gauge-high stats-icon"></i>
+                        <h3>Easy</h3>
+                        <p>HR Control</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about-section">
+        <div class="container">
+            <div class="row align-items-center g-5">
+
+                <div class="col-lg-6 animate-left">
+                    <div class="image-frame">
+                        <img th:src="@{/images/corporate.jpeg}" alt="Corporate HR">
+                    </div>
+                </div>
+
+                <div class="col-lg-6 animate-right">
+                    <span class="section-badge">About HR Synergy</span>
+
+                    <h2>Complete HR Management Platform</h2>
+
+                    <p>
+                        HR Synergy helps organizations reduce manual work and
+                        manage HR operations through a centralized, secure and
+                        user-friendly platform.
+                    </p>
+
+                    <div class="about-list">
+                        <div><i class="fa-solid fa-check"></i> Employee Management</div>
+                        <div><i class="fa-solid fa-check"></i> Attendance Tracking</div>
+                        <div><i class="fa-solid fa-check"></i> Leave Management</div>
+                        <div><i class="fa-solid fa-check"></i> Payroll System</div>
+                        <div><i class="fa-solid fa-check"></i> Recruitment Module</div>
+                        <div><i class="fa-solid fa-check"></i> Feedback System</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features-section">
+        <div class="container">
+
+            <div class="section-heading animate-up">
+                <span class="section-badge">HRMS Modules</span>
+                <h2>Powerful Features</h2>
+                <p>All important HR operations in one digital platform.</p>
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-box animate-up">
+                        <i class="fa-solid fa-user-tie"></i>
+                        <h5>Employee Management</h5>
+                        <p>Manage employee records, profile and departments.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-box animate-up">
+                        <i class="fa-solid fa-calendar-check"></i>
+                        <h5>Attendance</h5>
+                        <p>Track daily attendance and working records.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-box animate-up">
+                        <i class="fa-solid fa-plane-departure"></i>
+                        <h5>Leave Management</h5>
+                        <p>Apply, approve and manage employee leaves.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-box animate-up">
+                        <i class="fa-solid fa-money-check-dollar"></i>
+                        <h5>Payroll</h5>
+                        <p>Manage salary and payroll records professionally.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- EMPLOYEE BENEFITS -->
+    <section class="benefit-section">
+        <div class="container">
+            <div class="benefit-box">
+
+                <div class="row align-items-center g-5">
+
+                    <div class="col-lg-6">
+                        <span class="white-badge">Employee Benefits</span>
+                        <h2>Better Employee Experience</h2>
+                        <p>
+                            Provide organized HR services, employee support,
+                            benefit details and a smooth digital experience.
+                        </p>
+
+                        <a th:href="@{/login}" class="btn btn-light rounded-pill px-4">
+                            Explore Dashboard
+                        </a>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="benefit-image">
+                            <img th:src="@{/images/employee-benefits.jpeg}" alt="Employee Benefits">
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- WORKFLOW -->
+    <section class="workflow-section">
+        <div class="container">
+
+            <div class="section-heading">
+                <span class="section-badge">Workflow</span>
+                <h2>How HR Synergy Works</h2>
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-md-4">
+                    <div class="workflow-card">
+                        <span>01</span>
+                        <h5>Admin Setup</h5>
+                        <p>Admin adds employees, departments, salary and login credentials.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="workflow-card">
+                        <span>02</span>
+                        <h5>Employee Login</h5>
+                        <p>Employees login to view profile, apply leave and give feedback.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="workflow-card">
+                        <span>03</span>
+                        <h5>HR Monitoring</h5>
+                        <p>Admin manages requests, employee data and reports.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery-section">
+        <div class="container">
+
+            <div class="section-heading">
+                <span class="section-badge">Gallery</span>
+                <h2>HRMS Visuals</h2>
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-md-4">
+                    <div class="gallery-box">
+                        <img th:src="@{/images/support.jpeg}" alt="Support">
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="gallery-box">
+                        <img th:src="@{/images/slider.jpeg}" alt="Slider">
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="gallery-box">
+                        <img th:src="@{/images/corporate.jpeg}" alt="Corporate">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-box">
+                <h2>Start Managing HR Smarter</h2>
+                <p>Login to access HR Synergy dashboard and manage your HR operations.</p>
+
+                <a th:href="@{/login}" class="btn btn-light btn-lg rounded-pill px-5">
+                    Login Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+</section>
+
+</html>

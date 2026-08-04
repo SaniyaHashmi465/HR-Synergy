@@ -1,0 +1,435 @@
+/* ================================================ */
+/* EDIT JOB PAGE — Corporate HRMS theme               */
+/* Blue #3A4FCF / Purple #7B3FE4                      */
+/* Append to your existing style.css                  */
+/* ================================================ */
+
+:root {
+    --ej-blue: #3A4FCF;
+    --ej-purple: #7B3FE4;
+}
+
+.editjob-page {
+    padding: 10px 4px 50px;
+}
+
+/* HEADER BANNER — floating effect */
+
+.editjob-banner {
+    position: relative;
+    background: linear-gradient(135deg, var(--ej-blue), var(--ej-purple));
+    border-radius: 26px;
+    padding: 34px 36px;
+    color: #ffffff;
+    box-shadow: 0 25px 55px rgba(58, 79, 207, 0.28);
+    overflow: hidden;
+    animation: floatBanner 5s ease-in-out infinite, fadeInDown 0.5s ease;
+}
+
+@keyframes floatBanner {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+
+.editjob-banner .banner-glow {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.18), transparent 65%);
+    top: -110px;
+    right: -60px;
+}
+
+.editjob-banner .banner-icon {
+    position: relative;
+    width: 58px;
+    height: 58px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+    z-index: 2;
+}
+
+.banner-icon-badge {
+    position: absolute;
+    bottom: -4px;
+    right: -4px;
+    width: 22px;
+    height: 22px;
+    background: #16a34a;
+    border-radius: 50%;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #ffffff;
+}
+
+.editjob-banner h2 {
+    color: #ffffff;
+    position: relative;
+    z-index: 2;
+}
+
+.editjob-banner .banner-subtitle {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.96rem;
+    position: relative;
+    z-index: 2;
+}
+
+.btn-back-jobs {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.16);
+    color: #ffffff;
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    border-radius: 14px;
+    padding: 10px 22px;
+    font-weight: 700;
+    transition: 0.25s;
+}
+
+.btn-back-jobs:hover {
+    background: #ffffff;
+    color: var(--ej-blue);
+    transform: translateY(-2px);
+}
+
+/* ALERTS */
+
+.editjob-alert {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-radius: 16px;
+    padding: 14px 20px;
+    font-weight: 600;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.05);
+    animation: fadeInUp 0.4s ease, fadeOutAlert 5s ease forwards;
+}
+
+.editjob-alert i {
+    font-size: 1.2rem;
+}
+
+.editjob-alert-success {
+    background: #e9f9ee;
+    color: #146c2e;
+}
+
+.editjob-alert-success i {
+    color: #1bb55c;
+}
+
+.editjob-alert-danger {
+    background: #fdeceb;
+    color: #b42318;
+}
+
+.editjob-alert-danger i {
+    color: #e0392f;
+}
+
+@keyframes fadeOutAlert {
+    0%, 85% { opacity: 1; }
+    100% { opacity: 0; visibility: hidden; }
+}
+
+/* LAYOUT — form + side info panel */
+
+.editjob-layout {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 24px;
+    align-items: start;
+}
+
+/* FORM CARD — glassmorphism */
+
+.editjob-card {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 24px;
+    padding: 34px;
+    box-shadow: 0 20px 50px rgba(58, 79, 207, 0.12);
+    animation: fadeInUp 0.5s ease;
+}
+
+.editjob-card-header {
+    margin-bottom: 22px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(58, 79, 207, 0.12);
+}
+
+.editjob-card-header h4 {
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 0;
+}
+
+/* FORM FIELDS */
+
+.editjob-form .form-label {
+    font-weight: 700;
+    color: #374151;
+    font-size: 0.88rem;
+    margin-bottom: 6px;
+}
+
+.input-icon-group {
+    position: relative;
+}
+
+.input-icon-group > i {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+    font-size: 0.95rem;
+    transition: 0.25s;
+    pointer-events: none;
+}
+
+.input-icon-group .form-control {
+    border: 1.5px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 12px 16px 12px 44px;
+    font-size: 0.95rem;
+    background: rgba(249, 250, 251, 0.9);
+    transition: 0.25s;
+    width: 100%;
+}
+
+.input-icon-group .form-control:focus {
+    border-color: var(--ej-blue);
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(58, 79, 207, 0.14), 0 0 16px rgba(123, 63, 228, 0.12);
+    outline: none;
+}
+
+.input-icon-group:focus-within > i {
+    color: var(--ej-blue);
+}
+
+.textarea-icon-group > i {
+    top: 18px;
+    transform: none;
+}
+
+.textarea-icon-group textarea.form-control {
+    padding-top: 12px;
+    resize: vertical;
+}
+
+/* FORM ACTIONS */
+
+.editjob-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 14px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(58, 79, 207, 0.12);
+}
+
+.btn-editjob-back,
+.btn-editjob-save {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-editjob-back {
+    border: 1.5px solid #e5e7eb;
+    background: #ffffff;
+    color: #374151;
+    border-radius: 14px;
+    padding: 11px 24px;
+    font-weight: 700;
+    transition: 0.25s;
+}
+
+.btn-editjob-back:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+    transform: translateY(-2px);
+}
+
+/* Update Job button — green-blue gradient as specified */
+
+.btn-editjob-save {
+    background: linear-gradient(135deg, var(--ej-blue), #16a34a);
+    color: #ffffff;
+    border: none;
+    border-radius: 14px;
+    padding: 11px 28px;
+    font-weight: 700;
+    box-shadow: 0 12px 26px rgba(58, 79, 207, 0.26);
+    transition: 0.25s;
+}
+
+.btn-editjob-save:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 32px rgba(22, 163, 74, 0.34);
+    color: #ffffff;
+}
+
+/* RIPPLE EFFECT */
+
+.ripple-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: scale(0);
+    animation: rippleAnim 0.6s ease-out;
+    pointer-events: none;
+}
+
+.btn-editjob-back .ripple-circle {
+    background: rgba(58, 79, 207, 0.18);
+}
+
+@keyframes rippleAnim {
+    to {
+        transform: scale(2.5);
+        opacity: 0;
+    }
+}
+
+/* INFO CARD (side panel) */
+
+.editjob-info-card {
+    background: linear-gradient(160deg, var(--ej-blue), var(--ej-purple));
+    color: #ffffff;
+    border-radius: 22px;
+    padding: 28px 24px;
+    box-shadow: 0 18px 40px rgba(58, 79, 207, 0.25);
+    animation: fadeInUp 0.6s ease;
+    position: sticky;
+    top: 120px;
+}
+
+.editjob-info-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin-bottom: 16px;
+}
+
+.editjob-info-card h5 {
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.editjob-info-card p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.88);
+    margin-bottom: 18px;
+}
+
+.editjob-info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.editjob-info-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.12);
+    padding: 9px 12px;
+    border-radius: 10px;
+}
+
+.editjob-info-list i {
+    color: #86efac;
+    font-size: 0.85rem;
+}
+
+/* ANIMATIONS */
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 992px) {
+    .editjob-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .editjob-info-card {
+        position: static;
+    }
+}
+
+@media (max-width: 768px) {
+    .editjob-banner {
+        padding: 26px 22px;
+        text-align: center;
+    }
+
+    .editjob-banner .d-flex.justify-content-between {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .editjob-card {
+        padding: 24px 20px;
+    }
+
+    .editjob-actions {
+        flex-direction: column-reverse;
+        justify-content: stretch;
+    }
+
+    .btn-editjob-back,
+    .btn-editjob-save {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .editjob-page {
+        padding: 6px 0 40px;
+    }
+}

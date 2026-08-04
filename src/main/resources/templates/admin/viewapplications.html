@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base :: layout(~{::section})}">
+
+<section>
+
+<!--
+    DataTables CDN (Bootstrap 5 integration).
+    Scoped to this page only — base.html's shared <head> is untouched.
+    jQuery is included below since base.html's Bootstrap bundle.js does
+    not include it, and DataTables requires jQuery.
+-->
+<link rel="stylesheet" href="https://cdn.datatables.net/2.3.8/css/dataTables.bootstrap5.min.css">
+
+<div class="apps-page">
+
+    <!-- HEADER BANNER -->
+    <div class="apps-banner mb-4">
+        <div class="banner-glow"></div>
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+            <div class="d-flex align-items-center gap-3">
+                <div class="banner-icon">
+                    <i class="fa-solid fa-users-viewfinder"></i>
+                </div>
+                <div>
+                    <h2 class="fw-bold mb-1">Candidate Applications</h2>
+                    <p class="mb-0 banner-subtitle">Review, shortlist, hire, or reject job applicants</p>
+                </div>
+            </div>
+
+            <a th:href="@{/admin/dashboard}" class="btn btn-back-dashboard">
+                <i class="fa-solid fa-arrow-left me-2"></i>Back to Dashboard
+            </a>
+        </div>
+    </div>
+
+    <!-- INFO CARD -->
+    <div class="apps-info-panel mb-4">
+        <i class="fa-solid fa-briefcase"></i>
+        <span>Manage recruitment workflow from application to hiring.</span>
+    </div>
+
+    <!-- STATISTICS CARDS -->
+    <div class="row g-4 mb-4">
+
+        <div class="col-lg col-md-4 col-6">
+            <div class="apps-stat-card stat-total fade-in-up">
+                <div class="apps-stat-icon"><i class="fa-solid fa-inbox"></i></div>
+                <h3 id="statTotal">0</h3>
+                <p>Total Applications</p>
+            </div>
+        </div>
+
+        <div class="col-lg col-md-4 col-6">
+            <div class="apps-stat-card stat-applied fade-in-up">
+                <div class="apps-stat-icon"><i class="fa-solid fa-paper-plane"></i></div>
+                <h3 id="statApplied">0</h3>
+                <p>Applied</p>
+            </div>
+        </div>
+
+        <div class="col-lg col-md-4 col-6">
+            <div class="apps-stat-card stat-shortlisted fade-in-up">
+                <div class="apps-stat-icon"><i class="fa-solid fa-star"></i></div>
+                <h3 id="statShortlisted">0</h3>
+                <p>Shortlisted</p>
+            </div>
+        </div>
+
+        <div class="col-lg col-md-4 col-6">
+            <div class="apps-stat-card stat-hired fade-in-up">
+                <div class="apps-stat-icon"><i class="fa-solid fa-user-check"></i></div>
+                <h3 id="statHired">0</h3>
+                <p>Hired</p>
+            </div>
+        </div>
+
+        <div class="col-lg col-md-4 col-6">
+            <div class="apps-stat-card stat-rejected fade-in-up">
+                <div class="apps-stat-icon"><i class="fa-solid fa-circle-xmark"></i></div>
+                <h3 id="statRejected">0</h3>
+                <p>Rejected</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- TABLE CARD -->
+    <div class="apps-table-panel">
+
+        <div class="apps-table-header">
+            <h4><i class="fa-solid fa-table-list me-2"></i>Application Records</h4>
+        </div>
+
+        <div class="table-responsive">
+            <table id="applicationTable" class="table table-hover align-middle w-100">
+                <thead>
+                    <tr>
+                        <th>Application ID</th>
+                        <th>Job ID</th>
+                        <th>Job Profile</th>
+                        <th>Candidate Name</th>
+                        <th>Candidate Email</th>
+                        <th>Qualification</th>
+						<th>Resume</th>
+                        <th>Status</th>
+                        <th>Application Date</th>
+                        <th>Action</th>
+						
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="app : ${applications}">
+                        <td th:text="${app.applicationid}"></td>
+                        <td th:text="${app.jobid}"></td>
+                        <td th:text="${app.jobprofile}"></td>
+                        <td th:text="${app.candidateName}"></td>
+                        <td th:text="${app.candidateEmail}"></td>
+                        <td th:text="${app.qualification}"></td>
+						<td>
+							<a th:href="@{'/uploads/resumes/' + ${app.resume}}"
+							   target="_blank"
+							   class="btn btn-primary btn-sm">
+							   <i class="fa-solid fa-file-pdf"></i>
+							    View Resume
+							</a>
+						</td>
+                        <td>
+                            <span th:if="${app.status=='APPLIED'}" class="status-badge badge-applied">
+                                <i class="fa-solid fa-paper-plane"></i> Applied
+                            </span>
+                            <span th:if="${app.status=='SHORTLISTED'}" class="status-badge badge-shortlisted">
+                                <i class="fa-solid fa-star"></i> Shortlisted
+                            </span>
+                            <span th:if="${app.status=='REJECTED'}" class="status-badge badge-rejected">
+                                <i class="fa-solid fa-circle-xmark"></i> Rejected
+                            </span>
+                            <span th:if="${app.status=='HIRED'}" class="status-badge badge-hired">
+                                <i class="fa-solid fa-user-check"></i> Hired
+                            </span>
+                        </td>
+                        <td th:text="${app.applicationDate}"></td>
+                        <td>
+                            <div class="d-flex gap-2" th:if="${app.status!='HIRED' and app.status!='REJECTED'}">
+                                <a th:href="@{/admin/shortlist/{id}(id=${app.applicationid})}"
+                                   class="btn-action btn-shortlist">
+                                    <i class="fa-solid fa-star"></i> Shortlist
+                                </a>
+                                <a th:href="@{/admin/hirecandidate/{id}(id=${app.applicationid})}"
+                                   class="btn-action btn-hire">
+                                    <i class="fa-solid fa-user-check"></i> Hire
+                                </a>
+                                <a th:href="@{/admin/rejectcandidate/{id}(id=${app.applicationid})}"
+                                   class="btn-action btn-reject"
+                                   onclick="return confirm('Are you sure you want to reject this candidate?');">
+                                    <i class="fa-solid fa-xmark"></i> Reject
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>
+
+<!--
+    jQuery + DataTables JS (Bootstrap 5 integration), plus the
+    page-specific viewapplications.js. Loaded at the end so they
+    execute after the table markup above exists.
+-->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.datatables.net/2.3.8/js/dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/2.3.8/js/dataTables.bootstrap5.min.js"></script>
+<script th:src="@{/js/viewapplications.js}"></script>
+
+</section>
+
+</html>

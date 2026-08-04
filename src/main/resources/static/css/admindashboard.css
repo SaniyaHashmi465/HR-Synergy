@@ -1,0 +1,399 @@
+/* ================================================ */
+/* ADMIN DASHBOARD v2 — sidebar + stat-strip layout  */
+/* Structurally different from the card-grid version */
+/* Append to your existing style.css                  */
+/* ================================================ */
+
+.admin-shell {
+    display: flex;
+    min-height: 100vh;
+    background: #f1f5f9;
+    margin: -1.5rem -12px;
+}
+
+/* SIDEBAR */
+
+.admin-sidebar {
+    width: 260px;
+    flex-shrink: 0;
+    background: #0f172a;
+    color: #cbd5e1;
+    padding: 26px 18px;
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 1.05rem;
+    padding: 0 10px 22px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sidebar-brand i {
+    color: #5b9dff;
+    font-size: 1.2rem;
+}
+
+.sidebar-section-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #64748b;
+    padding: 14px 10px 8px;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    color: #cbd5e1;
+    font-weight: 600;
+    font-size: 0.92rem;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.sidebar-link i {
+    width: 18px;
+    text-align: center;
+    color: #7c93b3;
+    font-size: 0.92rem;
+}
+
+.sidebar-link:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: #ffffff;
+}
+
+.sidebar-link.active {
+    background: linear-gradient(135deg, #0d6efd, #6610f2);
+    color: #ffffff;
+}
+
+.sidebar-link.active i {
+    color: #ffffff;
+}
+
+.sidebar-logout {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 10px;
+    color: #fca5a5;
+    font-weight: 700;
+    font-size: 0.92rem;
+    text-decoration: none;
+    border: 1px solid rgba(252, 165, 165, 0.25);
+    transition: 0.2s;
+}
+
+.sidebar-logout:hover {
+    background: rgba(252, 165, 165, 0.1);
+    color: #ffffff;
+}
+
+/* MAIN PANEL */
+
+.admin-main {
+    flex: 1;
+    padding: 30px 36px 60px;
+    min-width: 0;
+}
+
+.admin-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 28px;
+}
+
+.admin-topbar h2 {
+    color: #111827;
+}
+
+.btn-topbar-logout {
+    background: #ffffff;
+    color: #dc2626;
+    border: 1.5px solid #fecaca;
+    border-radius: 12px;
+    padding: 9px 20px;
+    font-weight: 700;
+    align-items: center;
+    transition: 0.2s;
+}
+
+.btn-topbar-logout:hover {
+    background: #fef2f2;
+}
+
+/* STAT STRIP — horizontal scroll of compact tiles */
+
+.stat-strip {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    padding-bottom: 6px;
+    scroll-snap-type: x proximity;
+}
+
+.stat-strip::-webkit-scrollbar {
+    height: 6px;
+}
+
+.stat-strip::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+}
+
+.stat-tile {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 20px 18px;
+    min-width: 170px;
+    flex: 1 0 170px;
+    scroll-snap-align: start;
+    border-left: 4px solid transparent;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    transition: 0.25s;
+}
+
+.stat-tile:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
+}
+
+.stat-tile-icon {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    opacity: 0.85;
+}
+
+.stat-tile h3 {
+    font-weight: 900;
+    color: #111827;
+    margin-bottom: 2px;
+    font-size: 1.7rem;
+}
+
+.stat-tile p {
+    color: #6b7280;
+    font-size: 0.82rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.stat-tile a {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: inherit;
+    opacity: 0.85;
+}
+
+.stat-tile a i {
+    font-size: 0.7rem;
+    margin-left: 3px;
+}
+
+.accent-blue   { border-left-color: #0d6efd; }
+.accent-blue   .stat-tile-icon, .accent-blue   a { color: #0d6efd; }
+
+.accent-green  { border-left-color: #16a34a; }
+.accent-green  .stat-tile-icon, .accent-green  a { color: #16a34a; }
+
+.accent-amber  { border-left-color: #d97706; }
+.accent-amber  .stat-tile-icon, .accent-amber  a { color: #d97706; }
+
+.accent-red    { border-left-color: #dc2626; }
+.accent-red    .stat-tile-icon, .accent-red    a { color: #dc2626; }
+
+.accent-teal   { border-left-color: #0d9488; }
+.accent-teal   .stat-tile-icon, .accent-teal   a { color: #0d9488; }
+
+.accent-purple { border-left-color: #6610f2; }
+.accent-purple .stat-tile-icon, .accent-purple a { color: #6610f2; }
+
+.accent-gray   { border-left-color: #4b5563; }
+.accent-gray   .stat-tile-icon, .accent-gray   a { color: #4b5563; }
+
+/* PANEL BLOCKS */
+
+.panel-block {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 26px;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.05);
+}
+
+.panel-block-header {
+    margin-bottom: 18px;
+}
+
+.panel-block-header h4 {
+    color: #111827;
+    font-weight: 800;
+}
+
+/* ROW LIST — horizontal item rows, not cards */
+
+.row-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.row-item {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 16px;
+    border-radius: 14px;
+    transition: 0.2s;
+    border: 1px solid #f1f5f9;
+}
+
+.row-item:hover {
+    background: #f8fafc;
+    border-color: #e2e8f0;
+    transform: translateX(4px);
+}
+
+.row-item-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #ffffff;
+    transition: 0.25s;
+}
+
+.row-item:hover .row-item-icon {
+    transform: scale(1.08);
+}
+
+.row-item-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.row-item-body h5 {
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 2px;
+    font-size: 1rem;
+}
+
+.row-item-body p {
+    color: #6b7280;
+    font-size: 0.86rem;
+    margin-bottom: 0;
+}
+
+.row-item-btn {
+    flex-shrink: 0;
+    border-radius: 10px;
+    font-weight: 700;
+    padding: 8px 18px;
+    font-size: 0.88rem;
+}
+
+.ri-blue   { background: linear-gradient(135deg, #0d6efd, #3b82f6); }
+.ri-green  { background: linear-gradient(135deg, #16a34a, #22c55e); }
+.ri-amber  { background: linear-gradient(135deg, #d97706, #f59e0b); }
+.ri-red    { background: linear-gradient(135deg, #dc2626, #ef4444); }
+.ri-teal   { background: linear-gradient(135deg, #0d9488, #14b8a6); }
+.ri-purple { background: linear-gradient(135deg, #6610f2, #8b5cf6); }
+.ri-dark   { background: linear-gradient(135deg, #1f2937, #374151); }
+.ri-gray   { background: linear-gradient(135deg, #4b5563, #6b7280); }
+
+/* FADE-IN ANIMATION */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    opacity: 0;
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.stat-strip .stat-tile:nth-child(1) { animation-delay: 0.03s; }
+.stat-strip .stat-tile:nth-child(2) { animation-delay: 0.08s; }
+.stat-strip .stat-tile:nth-child(3) { animation-delay: 0.13s; }
+.stat-strip .stat-tile:nth-child(4) { animation-delay: 0.18s; }
+.stat-strip .stat-tile:nth-child(5) { animation-delay: 0.23s; }
+.stat-strip .stat-tile:nth-child(6) { animation-delay: 0.28s; }
+.stat-strip .stat-tile:nth-child(7) { animation-delay: 0.33s; }
+
+.row-list .row-item:nth-child(1) { animation-delay: 0.05s; }
+.row-list .row-item:nth-child(2) { animation-delay: 0.12s; }
+.row-list .row-item:nth-child(3) { animation-delay: 0.19s; }
+.row-list .row-item:nth-child(4) { animation-delay: 0.26s; }
+
+/* RESPONSIVE */
+
+@media (max-width: 992px) {
+    .admin-sidebar {
+        display: none;
+    }
+
+    .admin-main {
+        padding: 24px 20px 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .row-item {
+        flex-wrap: wrap;
+    }
+
+    .row-item-btn {
+        margin-left: 64px;
+    }
+
+    .admin-topbar {
+        text-align: center;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .stat-tile {
+        min-width: 140px;
+        flex: 1 0 140px;
+    }
+
+    .row-item-btn {
+        margin-left: 0;
+        width: 100%;
+        text-align: center;
+    }
+}

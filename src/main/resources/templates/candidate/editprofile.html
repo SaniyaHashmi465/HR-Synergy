@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base :: layout(~{::section})}">
+
+<section>
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-8">
+
+            <div class="card shadow-lg border-0 rounded-4">
+
+                <div class="card-header text-white"
+                     style="background:linear-gradient(135deg,#2563EB,#7C3AED);">
+
+                    <h2 class="mb-0">
+                        <i class="fa-solid fa-user-pen me-2"></i>
+                        Edit Profile
+                    </h2>
+
+                </div>
+
+                <div class="card-body p-4">
+
+                    <form th:action="@{/candidate/updateprofile}"
+                          th:object="${candidateDto}"
+                          method="post">
+
+                        <input type="hidden"
+                               th:field="*{candidateid}">
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+
+                                <label>Name</label>
+
+                                <input type="text"
+                                       class="form-control"
+                                       th:field="*{name}"
+                                       required>
+
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+
+                                <label>Gender</label>
+
+                                <select class="form-select"
+                                        th:field="*{gender}">
+
+                                    <option value="Male">Male</option>
+
+                                    <option value="Female">Female</option>
+
+                                    <option value="Other">Other</option>
+
+                                </select>
+
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+
+                                <label>Email Address</label>
+
+                                <input type="email"
+                                       class="form-control"
+                                       th:field="*{emailaddress}"
+                                       readonly>
+
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+
+                                <label>Contact Number</label>
+
+                                <input type="text"
+                                       class="form-control"
+                                       th:field="*{contactno}">
+
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+
+                                <label>City</label>
+
+                                <input type="text"
+                                       class="form-control"
+                                       th:field="*{city}">
+
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+
+                                <label>Qualification</label>
+
+                                <input type="text"
+                                       class="form-control"
+                                       th:field="*{qualification}">
+
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+
+                                <label>Experience</label>
+
+                                <input type="text"
+                                       class="form-control"
+                                       th:field="*{experience}">
+
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+
+                                <label>Key Skills</label>
+
+                                <input type="text"
+                                       class="form-control"
+                                       th:field="*{keyskill}">
+
+                            </div>
+
+                            <div class="col-12 mb-3">
+
+                                <label>Address</label>
+
+                                <textarea class="form-control"
+                                          rows="4"
+                                          th:field="*{address}">
+                                </textarea>
+
+                            </div>
+
+                        </div>
+
+                        <div class="text-center mt-4">
+
+                            <button class="btn btn-primary px-4">
+
+                                <i class="fa-solid fa-floppy-disk me-2"></i>
+
+                                Save Changes
+
+                            </button>
+
+                            <a th:href="@{/candidate/profile}"
+                               class="btn btn-secondary px-4">
+
+                                Cancel
+
+                            </a>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+</html>

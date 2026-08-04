@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html th:replace="~{base :: layout(~{::section})}">
+
+<section th:fragment="content">
+
+    <!-- Page CSS -->
+   
+
+    <!-- Page Header Banner -->
+    <div class="al-header-banner">
+        <div class="al-header-inner">
+            <div class="al-header-text">
+                <div class="al-header-icon-wrap">
+                    <i class="fa-solid fa-calendar-plus fa-lg"></i>
+                </div>
+                <div>
+                    <h1 class="al-title">Apply Leave</h1>
+                    <p class="al-subtitle">Submit your leave request for HR approval</p>
+                </div>
+            </div>
+            <a th:href="@{/employee/dashboard}" class="al-back-btn">
+                <i class="fa-solid fa-arrow-left me-2"></i>Back to Dashboard
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="al-main-wrapper">
+
+        <!-- Success Alert -->
+        <div th:if="${success}" class="al-success-alert" role="alert">
+            <div class="al-alert-icon">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <div class="al-alert-body">
+                <strong>Request Submitted!</strong>
+                <span th:text="${success}"></span>
+            </div>
+            <button type="button" class="al-alert-close" onclick="this.closest('.al-success-alert').remove()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <div class="al-content-grid">
+
+            <!-- Form Card -->
+            <div class="al-form-card">
+
+                <div class="al-form-card-header">
+                    <div class="al-form-card-icon">
+                        <i class="fa-solid fa-file-circle-plus"></i>
+                    </div>
+                    <div>
+                        <h2 class="al-form-card-title">Leave Application Form</h2>
+                        <p class="al-form-card-sub">Fill in the details below to submit your request</p>
+                    </div>
+                </div>
+
+                <div class="al-divider"></div>
+
+                <form th:action="@{/employee/applyleave}" method="post" class="al-form" autocomplete="off">
+
+                    <!-- Row 1: Name + Email -->
+                    <div class="al-form-row">
+
+                        <div class="al-field-group">
+                            <label class="al-label" for="employeeName">
+                                <i class="fa-solid fa-user al-label-icon"></i>Employee Name
+                            </label>
+                            <div class="al-input-wrap">
+                                <span class="al-input-icon"><i class="fa-solid fa-id-card"></i></span>
+                                <input type="text"
+                                       id="employeeName"
+                                       name="employeeName"
+                                       class="al-input"
+                                       placeholder="Enter your full name"
+                                       required />
+                            </div>
+                        </div>
+
+                        <div class="al-field-group">
+                            <label class="al-label" for="employeeEmail">
+                                <i class="fa-solid fa-envelope al-label-icon"></i>Employee Email
+                            </label>
+                            <div class="al-input-wrap">
+                                <span class="al-input-icon"><i class="fa-solid fa-at"></i></span>
+                                <input type="email"
+                                       id="employeeEmail"
+                                       name="employeeEmail"
+                                       class="al-input"
+                                       placeholder="Enter your email address"
+                                       required />
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Row 2: From Date + To Date -->
+                    <div class="al-form-row">
+
+                        <div class="al-field-group">
+                            <label class="al-label" for="fromDate">
+                                <i class="fa-solid fa-calendar-day al-label-icon"></i>From Date
+                            </label>
+                            <div class="al-input-wrap">
+                                <span class="al-input-icon"><i class="fa-regular fa-calendar"></i></span>
+                                <input type="date"
+                                       id="fromDate"
+                                       name="fromDate"
+                                       class="al-input al-date-input"
+                                       required />
+                            </div>
+                        </div>
+
+                        <div class="al-field-group">
+                            <label class="al-label" for="toDate">
+                                <i class="fa-solid fa-calendar-xmark al-label-icon"></i>To Date
+                            </label>
+                            <div class="al-input-wrap">
+                                <span class="al-input-icon"><i class="fa-regular fa-calendar-xmark"></i></span>
+                                <input type="date"
+                                       id="toDate"
+                                       name="toDate"
+                                       class="al-input al-date-input"
+                                       required />
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Row 3: Reason -->
+                    <div class="al-field-group al-full-width">
+                        <label class="al-label" for="reason">
+                            <i class="fa-solid fa-message al-label-icon"></i>Reason for Leave
+                        </label>
+                        <div class="al-textarea-wrap">
+                            <span class="al-textarea-icon"><i class="fa-solid fa-pen-to-square"></i></span>
+                            <textarea id="reason"
+                                      name="reason"
+                                      class="al-textarea"
+                                      rows="4"
+                                      placeholder="Briefly describe your reason for taking leave…"
+                                      required></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="al-btn-row">
+                        <a th:href="@{/employee/dashboard}" class="al-cancel-btn">
+                            <i class="fa-solid fa-arrow-left me-2"></i>Cancel
+                        </a>
+                        <button type="submit" class="al-submit-btn">
+                            <i class="fa-solid fa-paper-plane me-2"></i>Submit Leave Request
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+
+            <!-- Info Sidebar -->
+            <div class="al-sidebar">
+
+                <!-- Review Info Card -->
+                <div class="al-info-card">
+                    <div class="al-info-icon-wrap">
+						  <i class="fa-solid fa-id-badge"></i>
+                      <!--  <i class="fa-solid fa-shield-check"></i>-->
+                    </div>
+                    <h3 class="al-info-title">HR Review Process</h3>
+                    <p class="al-info-text">
+                        Your leave request will be reviewed by the HR / Admin team. You will be notified once a decision has been made.
+                    </p>
+                    <div class="al-info-note">
+                        <i class="fa-solid fa-circle-info me-2"></i>
+                        Please ensure your leave dates and reason are correct before submitting.
+                    </div>
+                </div>
+
+                <!-- Quick Tips Card -->
+                <div class="al-tips-card">
+                    <h4 class="al-tips-title">
+                        <i class="fa-solid fa-lightbulb me-2"></i>Quick Tips
+                    </h4>
+                    <ul class="al-tips-list">
+                        <li>
+                            <i class="fa-solid fa-check al-tip-check"></i>
+                            Double-check your leave dates
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check al-tip-check"></i>
+                            Provide a clear and concise reason
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check al-tip-check"></i>
+                            Notify your team in advance
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check al-tip-check"></i>
+                            Check your leave balance first
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Status Legend -->
+                <div class="al-legend-card">
+                    <h4 class="al-tips-title">
+                        <i class="fa-solid fa-circle-half-stroke me-2"></i>Status Guide
+                    </h4>
+                    <div class="al-legend-item">
+                        <span class="al-legend-badge pending"><i class="fa-solid fa-clock me-1"></i>Pending</span>
+                        <span class="al-legend-desc">Awaiting HR decision</span>
+                    </div>
+                    <div class="al-legend-item">
+                        <span class="al-legend-badge approved"><i class="fa-solid fa-circle-check me-1"></i>Approved</span>
+                        <span class="al-legend-desc">Leave granted</span>
+                    </div>
+                    <div class="al-legend-item">
+                        <span class="al-legend-badge rejected"><i class="fa-solid fa-circle-xmark me-1"></i>Rejected</span>
+                        <span class="al-legend-desc">Not approved</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+</html>

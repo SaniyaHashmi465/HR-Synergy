@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base :: layout(~{::section})}">
+
+<section>
+
+<div class="addjob-page">
+
+    <!-- HEADER BANNER -->
+    <div class="addjob-banner mb-4">
+        <div class="banner-glow"></div>
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+            <div class="d-flex align-items-center gap-3">
+                <div class="banner-icon">
+                    <i class="fa-solid fa-briefcase"></i>
+                </div>
+                <div>
+                    <h2 class="fw-bold mb-1">Post New Job</h2>
+                    <p class="mb-0 banner-subtitle">Create and publish a new job opening</p>
+                </div>
+            </div>
+
+            <a th:href="@{/admin/dashboard}" class="btn btn-back-dashboard">
+                <i class="fa-solid fa-arrow-left me-2"></i>Back to Dashboard
+            </a>
+        </div>
+    </div>
+
+    <!-- SUCCESS ALERT -->
+    <div th:if="${success}" class="addjob-alert-success mb-4">
+        <i class="fa-solid fa-circle-check"></i>
+        <span th:text="${success}"></span>
+    </div>
+
+    <div class="addjob-wrapper">
+
+        <!-- FORM CARD -->
+        <div class="addjob-card">
+
+            <div class="addjob-card-header">
+                <h4><i class="fa-solid fa-file-pen me-2"></i>Job Details</h4>
+            </div>
+
+            <form th:action="@{/admin/addjob}" method="post" class="addjob-form">
+
+                <div class="row g-4">
+
+                    <!-- Job Profile -->
+                    <div class="col-md-6">
+                        <label class="form-label">Job Profile</label>
+                        <div class="input-icon-group">
+                            <i class="fa-solid fa-user-tie"></i>
+                            <input type="text"
+                                   name="jobprofile"
+                                   class="form-control"
+                                   placeholder="Enter job profile / title"
+                                   required>
+                        </div>
+                    </div>
+
+                    <!-- Number of Vacancies -->
+                    <div class="col-md-6">
+                        <label class="form-label">Number of Vacancies</label>
+                        <div class="input-icon-group">
+                            <i class="fa-solid fa-users"></i>
+                            <input type="number"
+                                   name="noofvacancy"
+                                   class="form-control"
+                                   placeholder="Enter number of vacancies"
+                                   min="1"
+                                   required>
+                        </div>
+                    </div>
+
+                    <!-- Qualification -->
+                    <div class="col-md-6">
+                        <label class="form-label">Qualification</label>
+                        <div class="input-icon-group">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                            <input type="text"
+                                   name="qualification"
+                                   class="form-control"
+                                   placeholder="Enter required qualification"
+                                   required>
+                        </div>
+                    </div>
+
+                    <!-- Experience -->
+                    <div class="col-md-6">
+                        <label class="form-label">Experience</label>
+                        <div class="input-icon-group">
+                            <i class="fa-solid fa-chart-line"></i>
+                            <input type="text"
+                                   name="experience"
+                                   class="form-control"
+                                   placeholder="Enter required experience"
+                                   required>
+                        </div>
+                    </div>
+
+                    <!-- Job Description -->
+                    <div class="col-12">
+                        <label class="form-label">Job Description</label>
+                        <div class="input-icon-group textarea-icon-group">
+                            <i class="fa-solid fa-align-left"></i>
+                            <textarea name="description"
+                                      class="form-control"
+                                      rows="5"
+                                      placeholder="Describe role, responsibilities and requirements"
+                                      required></textarea>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- INFO PANEL -->
+                <div class="addjob-info-panel mt-4 mb-4">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <span>Posted jobs will be visible to candidates on the Jobs page.</span>
+                </div>
+
+                <!-- FORM ACTIONS -->
+                <div class="addjob-actions">
+                    <a th:href="@{/admin/dashboard}" class="btn btn-addjob-back">
+                        <i class="fa-solid fa-arrow-left me-2"></i>Back
+                    </a>
+                    <button type="submit" class="btn btn-addjob-save">
+                        <i class="fa-solid fa-briefcase me-2"></i>Post Job
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+</html>

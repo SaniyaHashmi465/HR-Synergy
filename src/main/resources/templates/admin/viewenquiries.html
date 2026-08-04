@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base :: layout(~{::section})}">
+
+<section>
+<link rel="stylesheet" href="https://cdn.datatables.net/2.3.8/css/dataTables.bootstrap5.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/3.0.6/css/responsive.bootstrap5.min.css">
+
+<div class="enquiry-page">
+
+    <!-- HEADER BANNER -->
+    <div class="enquiry-banner mb-4">
+        <div class="banner-glow"></div>
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+            <div class="d-flex align-items-center gap-3">
+                <div class="banner-icon">
+                    <i class="fa-solid fa-headset"></i>
+                </div>
+                <div>
+                    <h2 class="fw-bold mb-1">Enquiry Management</h2>
+                    <p class="mb-0 banner-subtitle">Manage and resolve customer enquiries efficiently</p>
+                </div>
+            </div>
+
+            <a th:href="@{/admin/dashboard}" class="btn btn-back-dashboard">
+                <i class="fa-solid fa-arrow-left me-2"></i>Back to Dashboard
+            </a>
+        </div>
+    </div>
+
+    <!-- SUCCESS ALERT (glassmorphism, auto fade-out) -->
+    <div th:if="${successMsg}" class="enquiry-alert-success mb-4" id="enquirySuccessAlert">
+        <i class="fa-solid fa-circle-check"></i>
+        <span th:text="${successMsg}"></span>
+    </div>
+
+    <!-- STATISTICS CARDS -->
+    <div class="row g-4 mb-4">
+
+        <div class="col-lg-3 col-md-6">
+            <div class="stat-card stat-total fade-in-up">
+                <div class="stat-icon">
+                    <i class="fa-solid fa-inbox"></i>
+                </div>
+                <h3 class="stat-count" data-count-target="0" id="statTotal">0</h3>
+                <p>Total Enquiries</p>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="stat-card stat-pending fade-in-up">
+                <div class="stat-icon">
+                    <i class="fa-solid fa-clock"></i>
+                </div>
+                <h3 class="stat-count" data-count-target="0" id="statPending">0</h3>
+                <p>Pending Requests</p>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="stat-card stat-resolved fade-in-up">
+                <div class="stat-icon">
+                    <i class="fa-solid fa-check-double"></i>
+                </div>
+                <h3 class="stat-count" data-count-target="0" id="statResolved">0</h3>
+                <p>Resolved Requests</p>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="stat-card stat-support fade-in-up">
+                <div class="stat-icon">
+                    <i class="fa-solid fa-headset"></i>
+                </div>
+                <h3 class="stat-count" data-count-target="0" id="statSupport">0</h3>
+                <p>Support Requests</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- DATATABLE CARD -->
+    <div class="table-panel">
+
+        <div class="table-panel-header">
+            <h4><i class="fa-solid fa-table-list me-2"></i>All Enquiries</h4>
+        </div>
+
+        <div class="table-responsive">
+            <table id="enquiryTable" class="table table-hover align-middle w-100">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Contact No.</th>
+                        <th>Subject</th>
+                        <th>Message</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="enq : ${enquiries}">
+                        <td th:text="${enq.enquiryid}"></td>
+                        <td th:text="${enq.name}"></td>
+                        <td th:text="${enq.emailaddress}"></td>
+                        <td th:text="${enq.contactno}"></td>
+                        <td th:text="${enq.subject}"></td>
+                        <td th:text="${enq.message}"></td>
+                        <td th:text="${enq.enquirydate}"></td>
+                        <td>
+                            <span th:if="${enq.status=='PENDING'}" class="status-badge badge-pending">
+                                <i class="fa-solid fa-clock"></i> Pending
+                            </span>
+                            <span th:if="${enq.status=='RESOLVED'}" class="status-badge badge-resolved">
+                                <i class="fa-solid fa-check"></i> Resolved
+                            </span>
+                        </td>
+                        <td>
+                            <div class="d-flex gap-2">
+                                <a th:href="@{/admin/resolveenquiry/{id}(id=${enq.enquiryid})}"
+                                   class="btn-action btn-resolve">
+                                    <i class="fa-solid fa-check"></i> Resolve
+                                </a>
+                                <a th:href="@{/admin/deleteenquiry/{id}(id=${enq.enquiryid})}"
+                                   class="btn-action btn-delete"
+                                   onclick="return confirm('Are you sure you want to delete this enquiry? This action cannot be undone.');">
+                                    <i class="fa-solid fa-trash"></i> Delete
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.datatables.net/2.3.8/js/dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/2.3.8/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/3.0.6/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/3.0.6/js/responsive.bootstrap5.min.js"></script>
+<script th:src="@{/js/viewenquiry.js}"></script>
+
+</section>
+
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base :: layout(~{::section})}">
+
+<section>
+
+<div class="emp-shell">
+
+    <!-- SIDEBAR -->
+    <aside class="emp-sidebar">
+
+        <div class="emp-sidebar-brand">
+            <i class="fa-solid fa-id-badge"></i>
+            <span>HR Synergy<br><small>Employee Panel</small></span>
+        </div>
+
+        <nav class="emp-nav">
+            <a th:href="@{/employee/profile}" class="emp-nav-link">
+                <i class="fa-solid fa-user"></i> Profile
+            </a>
+            <a th:href="@{/employee/events}" class="emp-nav-link">
+                <i class="fa-solid fa-calendar-days"></i> Events
+            </a>
+            <a th:href="@{/employee/feedback}" class="emp-nav-link">
+                <i class="fa-solid fa-comment-dots"></i> Feedback
+            </a>
+            <a th:href="@{/employee/applyleave}" class="emp-nav-link">
+                <i class="fa-solid fa-plane-departure"></i> Apply Leave
+            </a>
+            <a th:href="@{/employee/myleaves}" class="emp-nav-link">
+                <i class="fa-solid fa-list-check"></i> My Leaves
+            </a>
+            <a th:href="@{/employee/editprofile}" class="emp-nav-link">
+                <i class="fa-solid fa-user-pen"></i> Edit Profile
+            </a>
+            <a th:href="@{/employee/changepassword}" class="emp-nav-link">
+                <i class="fa-solid fa-key"></i> Change Password
+            </a>
+        </nav>
+
+        <div class="emp-sidebar-divider"></div>
+
+        <a th:href="@{/login}" class="emp-logout-link">
+            <i class="fa-solid fa-right-from-bracket"></i> Logout
+        </a>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="emp-main">
+
+        <!-- WELCOME BANNER -->
+        <div class="emp-welcome-banner mb-4">
+            <h2>Employee Dashboard</h2>
+            <p>Manage your profile, leaves, events and feedback</p>
+        </div>
+
+        <!-- DASHBOARD CARDS -->
+        <div class="row g-4">
+
+            <!-- Profile -->
+            <div class="col-lg-4 col-md-6">
+                <div class="emp-card fade-in-up">
+                    <div class="emp-card-icon icon-blue">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <h5>Profile</h5>
+                    <p>View your employee profile</p>
+                    <a th:href="@{/employee/profile}" class="btn btn-primary emp-card-btn">
+                        View Profile
+                    </a>
+                </div>
+            </div>
+
+            <!-- Events -->
+            <div class="col-lg-4 col-md-6">
+                <div class="emp-card fade-in-up">
+                    <div class="emp-card-icon icon-teal">
+                        <i class="fa-solid fa-calendar-days"></i>
+                    </div>
+                    <h5>Events</h5>
+                    <p>View company events</p>
+                    <a th:href="@{/employee/events}" class="btn btn-info emp-card-btn">
+                        View Events
+                    </a>
+                </div>
+            </div>
+
+            <!-- Feedback -->
+            <div class="col-lg-4 col-md-6">
+                <div class="emp-card fade-in-up">
+                    <div class="emp-card-icon icon-green">
+                        <i class="fa-solid fa-comment-dots"></i>
+                    </div>
+                    <h5>Feedback</h5>
+                    <p>Submit your feedback</p>
+                    <a th:href="@{/employee/feedback}" class="btn btn-success emp-card-btn">
+                        Submit Feedback
+                    </a>
+                </div>
+            </div>
+
+            <!-- Apply Leave -->
+            <div class="col-lg-4 col-md-6">
+                <div class="emp-card fade-in-up">
+                    <div class="emp-card-icon icon-amber">
+                        <i class="fa-solid fa-plane-departure"></i>
+                    </div>
+                    <h5>Apply Leave</h5>
+                    <p>Submit a leave request</p>
+                    <a th:href="@{/employee/applyleave}" class="btn btn-warning emp-card-btn">
+                        Apply Leave
+                    </a>
+                </div>
+            </div>
+
+            <!-- My Leaves -->
+            <div class="col-lg-4 col-md-6">
+                <div class="emp-card fade-in-up">
+                    <div class="emp-card-icon icon-gray">
+                        <i class="fa-solid fa-list-check"></i>
+                    </div>
+                    <h5>My Leaves</h5>
+                    <p>View leave request status</p>
+                    <a th:href="@{/employee/myleaves}" class="btn btn-secondary emp-card-btn">
+                        View Leaves
+                    </a>
+                </div>
+            </div>
+
+            <!-- Edit Profile -->
+            <div class="col-lg-4 col-md-6">
+                <div class="emp-card fade-in-up">
+                    <div class="emp-card-icon icon-purple">
+                        <i class="fa-solid fa-user-pen"></i>
+                    </div>
+                    <h5>Edit Profile</h5>
+                    <p>Update personal details</p>
+                    <a th:href="@{/employee/editprofile}" class="btn btn-info emp-card-btn">
+                        Edit Profile
+                    </a>
+                </div>
+            </div>
+
+            <!-- Change Password -->
+            <div class="col-lg-4 col-md-6">
+                <div class="emp-card fade-in-up">
+                    <div class="emp-card-icon icon-amber">
+                        <i class="fa-solid fa-key"></i>
+                    </div>
+                    <h5>Change Password</h5>
+                    <p>Update your login password</p>
+                    <a th:href="@{/employee/changepassword}" class="btn btn-warning emp-card-btn">
+                        Change Password
+                    </a>
+                </div>
+            </div>
+
+            <!-- Logout -->
+            <div class="col-lg-4 col-md-6">
+                <div class="emp-card fade-in-up">
+                    <div class="emp-card-icon icon-red">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                    </div>
+                    <h5>Logout</h5>
+                    <p>Exit from employee portal</p>
+                    <a th:href="@{/login}" class="btn btn-danger emp-card-btn">
+                        Logout
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+</section>
+
+</html>

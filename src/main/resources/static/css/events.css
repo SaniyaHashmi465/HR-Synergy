@@ -1,0 +1,277 @@
+/* ================================================ */
+/* COMPANY EVENTS PAGE — HR Synergy theme             */
+/* Append to your existing style.css                  */
+/* ================================================ */
+
+.empevents-page {
+    padding: 10px 4px 50px;
+}
+
+/* HEADER BANNER */
+
+.empevents-banner {
+    position: relative;
+    background: linear-gradient(135deg, #0d6efd, #6610f2);
+    border-radius: 26px;
+    padding: 34px 36px;
+    color: #ffffff;
+    box-shadow: 0 25px 55px rgba(13, 110, 253, 0.25);
+    overflow: hidden;
+    animation: fadeInDown 0.5s ease;
+}
+
+.empevents-banner .banner-glow {
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.18), transparent 65%);
+    top: -100px;
+    right: -50px;
+}
+
+.empevents-banner .banner-icon {
+    width: 58px;
+    height: 58px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+}
+
+.empevents-banner h2 {
+    color: #ffffff;
+    position: relative;
+    z-index: 2;
+}
+
+.empevents-banner .banner-subtitle {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.96rem;
+    position: relative;
+    z-index: 2;
+}
+
+.btn-back-dashboard {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.16);
+    color: #ffffff;
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    border-radius: 14px;
+    padding: 10px 22px;
+    font-weight: 700;
+    transition: 0.25s;
+}
+
+.btn-back-dashboard:hover {
+    background: #ffffff;
+    color: #0d6efd;
+    transform: translateY(-2px);
+}
+
+/* EMPTY STATE */
+
+.empevents-empty-state {
+    background: #ffffff;
+    border-radius: 22px;
+    padding: 60px 30px;
+    text-align: center;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+    animation: fadeInUp 0.5s ease;
+}
+
+.empevents-empty-state i {
+    font-size: 3rem;
+    color: #c7d2fe;
+    margin-bottom: 18px;
+}
+
+.empevents-empty-state h4 {
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 8px;
+}
+
+.empevents-empty-state p {
+    color: #6b7280;
+    margin-bottom: 0;
+}
+
+/* EVENT CARD */
+
+.empevents-card {
+    background: #ffffff;
+    border-radius: 22px;
+    overflow: hidden;
+    height: 100%;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    border: 1px solid #eef2f7;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.empevents-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 22px 45px rgba(13, 110, 253, 0.16);
+}
+
+.empevents-card-top {
+    background: linear-gradient(135deg, #0d6efd, #6610f2);
+    padding: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.empevents-card-top i {
+    color: #ffffff;
+    font-size: 1.8rem;
+    transition: 0.3s;
+}
+
+.empevents-card:hover .empevents-card-top i {
+    transform: scale(1.15) rotate(-6deg);
+}
+
+.empevents-card-body {
+    padding: 22px 24px;
+    flex: 1;
+}
+
+.empevents-title {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 14px;
+    font-size: 1.05rem;
+}
+
+.empevents-title i {
+    color: #0d6efd;
+    margin-top: 3px;
+    flex-shrink: 0;
+}
+
+.empevents-date {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #6610f2;
+    font-weight: 600;
+    font-size: 0.88rem;
+    margin-bottom: 16px;
+}
+
+.empevents-date i {
+    flex-shrink: 0;
+}
+
+.empevents-desc {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: #6b7280;
+    font-size: 0.92rem;
+    line-height: 1.6;
+}
+
+.empevents-desc i {
+    color: #9ca3af;
+    margin-top: 3px;
+    flex-shrink: 0;
+}
+
+.empevents-card-footer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f8fafc;
+    padding: 14px 24px;
+    border-top: 1px solid #eef2f7;
+    color: #6b7280;
+    font-size: 0.84rem;
+    font-weight: 600;
+}
+
+.empevents-card-footer i {
+    color: #0d6efd;
+}
+
+/* ANIMATIONS */
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    opacity: 0;
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.row .col-lg-6:nth-child(1) .fade-in-up { animation-delay: 0.04s; }
+.row .col-lg-6:nth-child(2) .fade-in-up { animation-delay: 0.1s; }
+.row .col-lg-6:nth-child(3) .fade-in-up { animation-delay: 0.16s; }
+.row .col-lg-6:nth-child(4) .fade-in-up { animation-delay: 0.22s; }
+.row .col-lg-6:nth-child(5) .fade-in-up { animation-delay: 0.28s; }
+.row .col-lg-6:nth-child(6) .fade-in-up { animation-delay: 0.34s; }
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+    .empevents-banner {
+        padding: 26px 22px;
+        text-align: center;
+    }
+
+    .empevents-banner .d-flex.justify-content-between {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .empevents-card-body {
+        padding: 18px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .empevents-page {
+        padding: 6px 0 40px;
+    }
+
+    .btn-back-dashboard {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .empevents-empty-state {
+        padding: 40px 20px;
+    }
+}

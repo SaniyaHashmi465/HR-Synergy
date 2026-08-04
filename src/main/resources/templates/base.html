@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Synergy | HRMS</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+	
+	<link href="https://cdn.datatables.net/1.13.8/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+	<link rel="stylesheet" th:href="@{/css/admindashboard.css}">
+	<link rel="stylesheet" th:href="@{/css/empdashboard.css}">
+	<link rel="stylesheet" th:href="@{/css/forgotpassword.css}">
+	<link rel="stylesheet" th:href="@{css/enquiry.css}" >
+	<link rel="stylesheet" th:href="@{/css/viewenquiry.css}">
+	<link rel="stylesheet" th:href="@{/css/addemployee.css}">
+	<link rel="stylesheet" th:href="@{/css/addevent.css}">
+	<link rel="stylesheet" th:href="@{/css/addjob.css}">
+	<link rel="stylesheet" th:href="@{/css/editemployee.css}">
+	<link rel="stylesheet" th:href="@{/css/editevent.css}">
+	<link rel="stylesheet" th:href="@{/css/editjob.css}">
+	<link rel="stylesheet" th:href="@{/css/viewapplications.css}">
+	<link rel="stylesheet" th:href="@{/css/viewemployee.css}">
+	<link rel="stylesheet" th:href="@{/css/viewevents.css}">
+	<link rel="stylesheet" th:href="@{/css/viewfeedback.css}">
+	<link rel="stylesheet" th:href="@{/css/viewjobs.css}">
+	<link rel="stylesheet" th:href="@{/css/viewleaves.css}">
+	<link rel="stylesheet" th:href="@{/css/applyleave.css}"/>
+	<link rel="stylesheet" th:href="@{/css/changepassword.css}"/>
+	<link rel="stylesheet" th:href="@{/css/editprofile.css}">
+	<link rel="stylesheet" th:href="@{/css/events.css}">
+	<link rel="stylesheet" th:href="@{/css/feedback.css}">
+	<link rel="stylesheet" th:href="@{/css/myleaves.css}">
+	<link rel="stylesheet" th:href="@{/css/profile.css}">
+	<link rel="stylesheet" th:href="@{/css/jobs.css}">
+	<link rel="stylesheet" th:href="@{/css/candidatedashboard.css}">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+    <div class="container">
+
+        <a class="navbar-brand d-flex align-items-center" th:href="@{/}">
+            <span class="nav-logo-frame">
+                <img th:src="@{/images/logo.jpeg}" class="nav-logo" alt="Logo">
+            </span>
+            <div>
+                <span class="brand-title">HR Synergy</span>
+                <small class="brand-subtitle d-block">HR Management System</small>
+            </div>
+        </a>
+
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+
+                <li class="nav-item"><a class="nav-link" th:href="@{/}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/jobs}">Jobs</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/joinus}">Join Us</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/about}">About</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/enquiry}">Contact</a></li>
+
+                <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                    <a class="btn btn-primary rounded-pill px-4 nav-login-btn" th:href="@{/login}">
+                        <i class="fa-solid fa-right-to-bracket me-1"></i> Login
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-3">
+    <div th:if="${successMsg}" class="alert alert-success alert-dismissible fade show app-alert app-alert-success">
+        <i class="fa-solid fa-circle-check app-alert-icon"></i>
+        <span th:text="${successMsg}"></span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+
+    <div th:if="${errorMsg}" class="alert alert-danger alert-dismissible fade show app-alert app-alert-danger">
+        <i class="fa-solid fa-circle-exclamation app-alert-icon"></i>
+        <span th:text="${errorMsg}"></span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+</div>
+
+<main>
+    <div th:replace="${content}"></div>
+</main>
+
+<footer class="footer-section">
+    <div class="footer-top-accent"></div>
+    <div class="container">
+
+        <div class="row gy-4">
+
+            <div class="col-md-4">
+                <h5>HR Synergy</h5>
+                <p>
+                    A modern Human Resource Management System for employee,
+                    attendance, leave, payroll and recruitment management.
+                </p>
+            </div>
+
+            <div class="col-md-2">
+                <h6>Quick Links</h6>
+                <p><a th:href="@{/}">Home</a></p>
+                <p><a th:href="@{/jobs}">Jobs</a></p>
+                <p><a th:href="@{/contact}">Contact</a></p>
+            </div>
+
+            <div class="col-md-3">
+                <h6>Modules</h6>
+                <p>Employee Management</p>
+                <p>Attendance Tracking</p>
+                <p>Payroll System</p>
+            </div>
+
+            <div class="col-md-3">
+                <h6>Contact</h6>
+                <p><i class="fa-solid fa-location-dot footer-icon"></i> Lucknow, Uttar Pradesh</p>
+                <p><i class="fa-solid fa-envelope footer-icon"></i> support@hrsynergy.com</p>
+            </div>
+
+        </div>
+
+        <hr>
+
+        <div class="text-center pb-3">
+            © 2026 HR Synergy. All Rights Reserved.
+        </div>
+    </div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.8/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

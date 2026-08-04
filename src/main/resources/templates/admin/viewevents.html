@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base :: layout(~{::section})}">
+
+<section>
+
+<!--
+    DataTables CDN (Bootstrap 5 integration).
+    Scoped to this page only — base.html's shared <head> is untouched.
+    jQuery is included below since base.html's Bootstrap bundle.js does
+    not include it, and DataTables requires jQuery.
+-->
+<link rel="stylesheet" href="https://cdn.datatables.net/2.3.8/css/dataTables.bootstrap5.min.css">
+
+<div class="events-page">
+
+    <!-- HEADER BANNER -->
+    <div class="events-banner mb-4">
+        <div class="banner-glow"></div>
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+            <div class="d-flex align-items-center gap-3">
+                <div class="banner-icon">
+                    <i class="fa-solid fa-calendar-days"></i>
+                </div>
+                <div>
+                    <h2 class="fw-bold mb-1">Event Management</h2>
+                    <p class="mb-0 banner-subtitle">Create, update and manage company events</p>
+                </div>
+            </div>
+
+            <div class="d-flex gap-2 flex-wrap">
+                <a th:href="@{/admin/addevent}" class="btn btn-add-event">
+                    <i class="fa-solid fa-calendar-plus me-2"></i>Add Event
+                </a>
+                <a th:href="@{/admin/dashboard}" class="btn btn-back-dashboard">
+                    <i class="fa-solid fa-arrow-left me-2"></i>Back to Dashboard
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- STATISTICS CARDS -->
+    <div class="row g-4 mb-4">
+
+        <div class="col-lg-3 col-md-6">
+            <div class="events-stat-card stat-total fade-in-up">
+                <div class="events-stat-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                <h3 th:text="${#lists.size(events)}">0</h3>
+                <p>Total Events</p>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="events-stat-card stat-upcoming fade-in-up">
+                <div class="events-stat-icon"><i class="fa-solid fa-clock"></i></div>
+                <h3 id="statUpcoming">0</h3>
+                <p>Upcoming Events</p>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="events-stat-card stat-published fade-in-up">
+                <div class="events-stat-icon"><i class="fa-solid fa-circle-check"></i></div>
+                <h3 id="statPublished">0</h3>
+                <p>Published Events</p>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="events-stat-card stat-notices fade-in-up">
+                <div class="events-stat-icon"><i class="fa-solid fa-bullhorn"></i></div>
+                <h3>—</h3>
+                <p>Employee Notices</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- TABLE CARD -->
+    <div class="events-table-panel">
+
+        <div class="events-table-header">
+            <h4><i class="fa-solid fa-table-list me-2"></i>Event Records</h4>
+        </div>
+
+        <div class="table-responsive">
+            <table id="eventTable" class="table table-hover align-middle w-100">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Event Title</th>
+                        <th>Description</th>
+                        <th>Event Date</th>
+                        <th>Posted Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="event : ${events}">
+                        <td th:text="${event.eventid}"></td>
+                        <td class="event-title-cell" th:text="${event.eventtitle}"></td>
+                        <td class="event-desc-cell">
+                            <span class="desc-truncate" th:text="${event.eventdescription}"></span>
+                        </td>
+                        <td class="event-date-cell" th:text="${event.eventdate}"></td>
+                        <td th:text="${event.posteddate}"></td>
+                        <td>
+                            <div class="d-flex gap-2">
+                                <a th:href="@{/admin/editevent/{id}(id=${event.eventid})}"
+                                   class="btn-action btn-edit">
+                                    <i class="fa-solid fa-pen"></i> Edit
+                                </a>
+                                <a th:href="@{/admin/deleteevent/{id}(id=${event.eventid})}"
+                                   class="btn-action btn-delete"
+                                   onclick="return confirm('Are you sure?')">
+                                    <i class="fa-solid fa-trash"></i> Delete
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>
+
+<!--
+    jQuery + DataTables JS (Bootstrap 5 integration), plus the
+    page-specific viewevents.js. Loaded at the end so they execute
+    after the table markup above exists.
+-->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.datatables.net/2.3.8/js/dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/2.3.8/js/dataTables.bootstrap5.min.js"></script>
+<script th:src="@{/js/viewevents.js}"></script>
+
+</section>
+
+</html>

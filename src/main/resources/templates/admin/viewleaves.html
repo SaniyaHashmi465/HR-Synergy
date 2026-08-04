@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html th:replace="~{base :: layout(~{::section})}">
+
+<section th:fragment="content">
+
+    <!-- Page CSS -->
+    <link rel="stylesheet" th:href="@{/css/viewleaves.css}" />
+
+    <!-- Page Header Banner -->
+    <div class="lm-header-banner">
+        <div class="lm-header-inner">
+            <div class="lm-header-text">
+                <div class="lm-header-icon-wrap">
+                    <i class="fa-solid fa-calendar-check fa-lg"></i>
+                </div>
+                <div>
+                    <h1 class="lm-title">Leave Management</h1>
+                    <p class="lm-subtitle">Review, approve and reject employee leave requests</p>
+                </div>
+            </div>
+            <a th:href="@{/admin/dashboard}" class="lm-back-btn">
+                <i class="fa-solid fa-arrow-left me-2"></i>Back to Dashboard
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="lm-main-wrapper">
+
+        <!-- Success Alert -->
+        <div th:if="${success}" class="lm-success-alert" role="alert">
+            <div class="lm-alert-icon">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <div class="lm-alert-body">
+                <strong>Success!</strong>
+                <span th:text="${success}"></span>
+            </div>
+            <button type="button" class="lm-alert-close" onclick="this.closest('.lm-success-alert').remove()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <!-- Statistics Cards -->
+        <div class="lm-stats-row">
+
+            <div class="lm-stat-card">
+                <div class="lm-stat-icon bg-indigo">
+                    <i class="fa-solid fa-layer-group"></i>
+                </div>
+                <div class="lm-stat-body">
+                    <span class="lm-stat-value" th:text="${totalLeaves}">0</span>
+                    <span class="lm-stat-label">Total Leaves</span>
+                </div>
+                <div class="lm-stat-badge indigo">All Requests</div>
+            </div>
+
+            <div class="lm-stat-card">
+                <div class="lm-stat-icon bg-amber">
+                    <i class="fa-solid fa-clock"></i>
+                </div>
+                <div class="lm-stat-body">
+                    <span class="lm-stat-value" th:text="${pendingLeaves}">0</span>
+                    <span class="lm-stat-label">Pending Leaves</span>
+                </div>
+                <div class="lm-stat-badge amber">Awaiting Review</div>
+            </div>
+
+            <div class="lm-stat-card">
+                <div class="lm-stat-icon bg-emerald">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <div class="lm-stat-body">
+                    <span class="lm-stat-value" th:text="${approvedLeaves}">0</span>
+                    <span class="lm-stat-label">Approved Leaves</span>
+                </div>
+                <div class="lm-stat-badge emerald">Granted</div>
+            </div>
+
+            <div class="lm-stat-card">
+                <div class="lm-stat-icon bg-red">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                </div>
+                <div class="lm-stat-body">
+                    <span class="lm-stat-value" th:text="${rejectedLeaves}">0</span>
+                    <span class="lm-stat-label">Rejected Leaves</span>
+                </div>
+                <div class="lm-stat-badge red">Declined</div>
+            </div>
+
+        </div>
+
+        <!-- Table Card -->
+        <div class="lm-table-card">
+            <div class="lm-table-header">
+                <div class="lm-table-title-group">
+                    <i class="fa-solid fa-table-list lm-table-title-icon"></i>
+                    <div>
+                        <h2 class="lm-table-title">Leave Requests</h2>
+                        <p class="lm-table-subtitle">All employee leave applications and their current status</p>
+                    </div>
+                </div>
+                <span class="lm-records-badge" id="lmRecordsBadge">Loading…</span>
+            </div>
+
+            <div class="lm-table-body">
+                <div class="table-responsive">
+                    <table id="leaveTable" class="table lm-table">
+                        <thead>
+                            <tr>
+                                <th><i class="fa-solid fa-hashtag me-1 op-50"></i>ID</th>
+                                <th><i class="fa-solid fa-user me-1 op-50"></i>Employee Name</th>
+                                <th><i class="fa-solid fa-envelope me-1 op-50"></i>Email</th>
+                                <th><i class="fa-solid fa-calendar-day me-1 op-50"></i>From Date</th>
+                                <th><i class="fa-solid fa-calendar-day me-1 op-50"></i>To Date</th>
+                                <th><i class="fa-solid fa-message me-1 op-50"></i>Reason</th>
+                                <th><i class="fa-solid fa-calendar-plus me-1 op-50"></i>Applied Date</th>
+                                <th class="text-center"><i class="fa-solid fa-circle-half-stroke me-1 op-50"></i>Status</th>
+                                <th class="text-center"><i class="fa-solid fa-gear me-1 op-50"></i>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="leave : ${leaves}" class="lm-row">
+                                <td>
+                                    <span class="lm-id-badge" th:text="${leave.leaveid}"></span>
+                                </td>
+                                <td>
+                                    <div class="lm-name-cell">
+                                        <div class="lm-avatar" th:text="${#strings.substring(leave.employeeName, 0, 1)}"></div>
+                                        <span class="lm-name-text" th:text="${leave.employeeName}"></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="lm-email-text" th:text="${leave.employeeEmail}"></span>
+                                </td>
+                                <td>
+                                    <span class="lm-date-chip from">
+                                        <i class="fa-regular fa-calendar me-1"></i>
+                                        <span th:text="${leave.fromDate}"></span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="lm-date-chip to">
+                                        <i class="fa-regular fa-calendar-xmark me-1"></i>
+                                        <span th:text="${leave.toDate}"></span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="lm-reason-truncate"
+                                          th:text="${leave.reason}"
+                                          th:title="${leave.reason}"></span>
+                                </td>
+                                <td>
+                                    <span class="lm-applied-chip">
+                                        <i class="fa-regular fa-clock me-1"></i>
+                                        <span th:text="${leave.appliedDate}"></span>
+                                    </span>
+                                </td>
+                                <td class="text-center">
+                                    <!-- PENDING -->
+                                    <span th:if="${leave.status=='PENDING'}" class="lm-status-badge pending">
+                                        <i class="fa-solid fa-clock me-1"></i>Pending
+                                    </span>
+                                    <!-- APPROVED -->
+                                    <span th:if="${leave.status=='APPROVED'}" class="lm-status-badge approved">
+                                        <i class="fa-solid fa-circle-check me-1"></i>Approved
+                                    </span>
+                                    <!-- REJECTED -->
+                                    <span th:if="${leave.status=='REJECTED'}" class="lm-status-badge rejected">
+                                        <i class="fa-solid fa-circle-xmark me-1"></i>Rejected
+                                    </span>
+                                </td>
+                                <td class="text-center">
+                                    <div class="lm-action-group">
+                                        <a th:href="@{/admin/approveleave/{id}(id=${leave.leaveid})}"
+                                           class="lm-approve-btn" title="Approve Leave">
+                                            <i class="fa-solid fa-check me-1"></i>Approve
+                                        </a>
+                                        <a th:href="@{/admin/rejectleave/{id}(id=${leave.leaveid})}"
+                                           class="lm-reject-btn" title="Reject Leave">
+                                            <i class="fa-solid fa-xmark me-1"></i>Reject
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Page JS -->
+    <script th:src="@{/js/viewleaves.js}"></script>
+
+</section>
+
+
+</html>

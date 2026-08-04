@@ -1,0 +1,311 @@
+/* ================================================ */
+/* ADD EVENT PAGE — HR Synergy theme                  */
+/* Append to your existing style.css                  */
+/* ================================================ */
+
+.addevent-page {
+    padding: 10px 4px 50px;
+}
+
+/* HEADER BANNER */
+
+.addevent-banner {
+    position: relative;
+    background: linear-gradient(135deg, #0d6efd, #6610f2);
+    border-radius: 26px;
+    padding: 34px 36px;
+    color: #ffffff;
+    box-shadow: 0 25px 55px rgba(13, 110, 253, 0.25);
+    overflow: hidden;
+    animation: fadeInDown 0.5s ease;
+}
+
+.addevent-banner .banner-glow {
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.18), transparent 65%);
+    top: -100px;
+    right: -50px;
+}
+
+.addevent-banner .banner-icon {
+    width: 58px;
+    height: 58px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+}
+
+.addevent-banner h2 {
+    color: #ffffff;
+    position: relative;
+    z-index: 2;
+}
+
+.addevent-banner .banner-subtitle {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.96rem;
+    position: relative;
+    z-index: 2;
+}
+
+.btn-back-events {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.16);
+    color: #ffffff;
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    border-radius: 14px;
+    padding: 10px 22px;
+    font-weight: 700;
+    transition: 0.25s;
+}
+
+.btn-back-events:hover {
+    background: #ffffff;
+    color: #0d6efd;
+    transform: translateY(-2px);
+}
+
+/* SUCCESS ALERT */
+
+.addevent-alert-success {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #e9f9ee;
+    color: #146c2e;
+    border-radius: 16px;
+    padding: 14px 20px;
+    font-weight: 600;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.05);
+    animation: fadeInUp 0.4s ease;
+}
+
+.addevent-alert-success i {
+    font-size: 1.2rem;
+    color: #1bb55c;
+}
+
+/* CENTERED WRAPPER */
+
+.addevent-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+/* FORM CARD */
+
+.addevent-card {
+    background: #ffffff;
+    border-radius: 26px;
+    padding: 34px;
+    width: 100%;
+    max-width: 640px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.07);
+    animation: fadeInUp 0.5s ease;
+}
+
+.addevent-card-header {
+    margin-bottom: 22px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.addevent-card-header h4 {
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 0;
+}
+
+/* FORM FIELDS */
+
+.addevent-form .form-label {
+    font-weight: 700;
+    color: #374151;
+    font-size: 0.88rem;
+    margin-bottom: 6px;
+}
+
+.input-icon-group {
+    position: relative;
+}
+
+.input-icon-group > i {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+    font-size: 0.95rem;
+    transition: 0.25s;
+    pointer-events: none;
+}
+
+.input-icon-group .form-control {
+    border: 1.5px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 12px 16px 12px 44px;
+    font-size: 0.95rem;
+    background: #f9fafb;
+    transition: 0.25s;
+    width: 100%;
+}
+
+.input-icon-group .form-control:focus {
+    border-color: #0d6efd;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.12);
+    outline: none;
+}
+
+.input-icon-group:focus-within > i {
+    color: #0d6efd;
+}
+
+.textarea-icon-group > i {
+    top: 18px;
+    transform: none;
+}
+
+.textarea-icon-group textarea.form-control {
+    padding-top: 12px;
+    resize: vertical;
+}
+
+/* INFO PANEL */
+
+.addevent-info-panel {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: linear-gradient(135deg, rgba(13, 110, 253, 0.08), rgba(102, 16, 242, 0.08));
+    border: 1px solid rgba(13, 110, 253, 0.18);
+    border-radius: 16px;
+    padding: 14px 20px;
+    color: #374151;
+    font-size: 0.92rem;
+    font-weight: 500;
+}
+
+.addevent-info-panel i {
+    font-size: 1.4rem;
+    color: #0d6efd;
+    flex-shrink: 0;
+}
+
+/* FORM ACTIONS */
+
+.addevent-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 14px;
+    padding-top: 16px;
+    border-top: 1px solid #f1f5f9;
+}
+
+.btn-addevent-back {
+    border: 1.5px solid #e5e7eb;
+    background: #ffffff;
+    color: #374151;
+    border-radius: 14px;
+    padding: 11px 24px;
+    font-weight: 700;
+    transition: 0.25s;
+}
+
+.btn-addevent-back:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+    transform: translateY(-2px);
+}
+
+.btn-addevent-save {
+    background: linear-gradient(135deg, #0d6efd, #6610f2);
+    color: #ffffff;
+    border: none;
+    border-radius: 14px;
+    padding: 11px 28px;
+    font-weight: 700;
+    box-shadow: 0 12px 26px rgba(13, 110, 253, 0.28);
+    transition: 0.25s;
+}
+
+.btn-addevent-save:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 32px rgba(13, 110, 253, 0.36);
+    color: #ffffff;
+}
+
+/* ANIMATIONS */
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+    .addevent-banner {
+        padding: 26px 22px;
+        text-align: center;
+    }
+
+    .addevent-banner .d-flex.justify-content-between {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .addevent-card {
+        padding: 24px 20px;
+    }
+
+    .addevent-actions {
+        flex-direction: column-reverse;
+        justify-content: stretch;
+    }
+
+    .btn-addevent-back,
+    .btn-addevent-save {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .addevent-page {
+        padding: 6px 0 40px;
+    }
+
+    .addevent-info-panel {
+        flex-direction: column;
+        text-align: center;
+    }
+}

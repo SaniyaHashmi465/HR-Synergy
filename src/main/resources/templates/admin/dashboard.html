@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base :: layout(~{::section})}">
+
+<section>
+
+<div class="admin-shell">
+
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar">
+
+        <div class="sidebar-brand">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>HR Synergy</span>
+        </div>
+
+        <div class="sidebar-section-label">Overview</div>
+        <a href="#stats-row" class="sidebar-link active">
+            <i class="fa-solid fa-chart-simple"></i> Analytics
+        </a>
+
+        <div class="sidebar-section-label">Manage</div>
+        <a th:href="@{/admin/addemployee}" class="sidebar-link">
+            <i class="fa-solid fa-user-plus"></i> Add Employee
+        </a>
+        <a th:href="@{/admin/viewemployees}" class="sidebar-link">
+            <i class="fa-solid fa-id-card-clip"></i> Employee Records
+        </a>
+        <a th:href="@{/admin/viewjobs}" class="sidebar-link">
+            <i class="fa-solid fa-briefcase"></i> Recruitment
+        </a>
+        <a th:href="@{/admin/viewapplications}" class="sidebar-link">
+            <i class="fa-solid fa-file-circle-check"></i> Applications
+        </a>
+
+        <div class="sidebar-section-label">Operations</div>
+        <a th:href="@{/admin/viewleaves}" class="sidebar-link">
+            <i class="fa-solid fa-plane-departure"></i> Leave Requests
+        </a>
+        <a th:href="@{/admin/viewevents}" class="sidebar-link">
+            <i class="fa-solid fa-calendar-days"></i> Events
+        </a>
+        <a th:href="@{/admin/viewfeedback}" class="sidebar-link">
+            <i class="fa-solid fa-comment-dots"></i> Feedback
+        </a>
+        <a th:href="@{/admin/viewenquiries}" class="sidebar-link">
+            <i class="fa-solid fa-circle-question"></i> Enquiries
+        </a>
+
+        <a th:href="@{/logout}" class="sidebar-logout">
+            <i class="fa-solid fa-right-from-bracket"></i> Logout
+        </a>
+
+    </aside>
+
+    <!-- MAIN PANEL -->
+    <main class="admin-main">
+
+        <div class="admin-topbar">
+            <div>
+                <h2 class="fw-bold mb-1">Admin Dashboard</h2>
+                <p class="text-muted mb-0">HR Synergy Management Overview</p>
+            </div>
+            <a th:href="@{/logout}" class="btn btn-topbar-logout d-none d-md-inline-flex">
+                <i class="fa-solid fa-right-from-bracket me-2"></i>Logout
+            </a>
+        </div>
+
+        <!-- STAT STRIP -->
+        <div class="stat-strip mb-5" id="stats-row">
+
+            <div class="stat-tile accent-blue fade-in-up">
+                <i class="fa-solid fa-users stat-tile-icon"></i>
+                <h3 th:text="${totalEmployees}">0</h3>
+                <p>Total Employees</p>
+                <a th:href="@{/admin/viewemployees}">View <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+
+            <div class="stat-tile accent-green fade-in-up">
+                <i class="fa-solid fa-briefcase stat-tile-icon"></i>
+                <h3 th:text="${totalJobs}">0</h3>
+                <p>Total Jobs</p>
+                <a th:href="@{/admin/viewjobs}">View <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+
+            <div class="stat-tile accent-amber fade-in-up">
+                <i class="fa-solid fa-file-circle-check stat-tile-icon"></i>
+                <h3 th:text="${totalApplications}">0</h3>
+                <p>Applications</p>
+                <a th:href="@{/admin/viewapplications}">View <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+
+            <div class="stat-tile accent-red fade-in-up">
+                <i class="fa-solid fa-plane-departure stat-tile-icon"></i>
+                <h3 th:text="${totalLeaves}">0</h3>
+                <p>Leave Requests</p>
+                <a th:href="@{/admin/viewleaves}">View <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+
+            <div class="stat-tile accent-teal fade-in-up">
+                <i class="fa-solid fa-calendar-days stat-tile-icon"></i>
+                <h3 th:text="${totalEvents}">0</h3>
+                <p>Events</p>
+                <a th:href="@{/admin/viewevents}">View <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+
+            <div class="stat-tile accent-purple fade-in-up">
+                <i class="fa-solid fa-comment-dots stat-tile-icon"></i>
+                <h3 th:text="${totalFeedback}">0</h3>
+                <p>Feedback</p>
+                <a th:href="@{/admin/viewfeedback}">View <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+
+            <div class="stat-tile accent-gray fade-in-up">
+                <i class="fa-solid fa-circle-question stat-tile-icon"></i>
+                <h3 th:text="${totalEnquiries}">0</h3>
+                <p>Enquiries</p>
+                <a th:href="@{/admin/viewenquiries}">View <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+
+        </div>
+
+        <!-- MANAGEMENT MODULES — ROW LIST STYLE -->
+        <div class="panel-block mb-4">
+
+            <div class="panel-block-header">
+                <h4><i class="fa-solid fa-layer-group me-2"></i>Management Modules</h4>
+            </div>
+
+            <div class="row-list">
+
+                <div class="row-item fade-in-up">
+                    <div class="row-item-icon ri-blue"><i class="fa-solid fa-user-plus"></i></div>
+                    <div class="row-item-body">
+                        <h5>Add Employee</h5>
+                        <p>Register a new employee into the system.</p>
+                    </div>
+                    <a th:href="@{/admin/addemployee}" class="btn btn-primary row-item-btn">
+                        Add Employee
+                    </a>
+                </div>
+
+                <div class="row-item fade-in-up">
+                    <div class="row-item-icon ri-green"><i class="fa-solid fa-id-card-clip"></i></div>
+                    <div class="row-item-body">
+                        <h5>Employee Records</h5>
+                        <p>View, edit and delete employee profiles.</p>
+                    </div>
+                    <a th:href="@{/admin/viewemployees}" class="btn btn-success row-item-btn">
+                        Manage Employees
+                    </a>
+                </div>
+
+                <div class="row-item fade-in-up">
+                    <div class="row-item-icon ri-dark"><i class="fa-solid fa-bullhorn"></i></div>
+                    <div class="row-item-body">
+                        <h5>Recruitment</h5>
+                        <p>Post job openings and manage vacancies.</p>
+                    </div>
+                    <a th:href="@{/admin/viewjobs}" class="btn btn-dark row-item-btn">
+                        Manage Jobs
+                    </a>
+                </div>
+
+                <div class="row-item fade-in-up">
+                    <div class="row-item-icon ri-amber"><i class="fa-solid fa-clipboard-list"></i></div>
+                    <div class="row-item-body">
+                        <h5>Candidate Applications</h5>
+                        <p>Shortlist, reject or hire candidates.</p>
+                    </div>
+                    <a th:href="@{/admin/viewapplications}" class="btn btn-warning row-item-btn">
+                        Applications
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ADDITIONAL MODULES — ROW LIST STYLE -->
+        <div class="panel-block mb-4">
+
+            <div class="panel-block-header">
+                <h4><i class="fa-solid fa-grip me-2"></i>Additional Modules</h4>
+            </div>
+
+            <div class="row-list">
+
+                <div class="row-item fade-in-up">
+                    <div class="row-item-icon ri-red"><i class="fa-solid fa-calendar-xmark"></i></div>
+                    <div class="row-item-body">
+                        <h5>Leave Management</h5>
+                        <p>Review and respond to leave requests.</p>
+                    </div>
+                    <a th:href="@{/admin/viewleaves}" class="btn btn-outline-danger row-item-btn">
+                        View Leaves
+                    </a>
+                </div>
+
+                <div class="row-item fade-in-up">
+                    <div class="row-item-icon ri-teal"><i class="fa-solid fa-calendar-days"></i></div>
+                    <div class="row-item-body">
+                        <h5>Event Management</h5>
+                        <p>Plan and organize company events.</p>
+                    </div>
+                    <a th:href="@{/admin/viewevents}" class="btn btn-outline-info row-item-btn">
+                        Manage Events
+                    </a>
+                </div>
+
+                <div class="row-item fade-in-up">
+                    <div class="row-item-icon ri-purple"><i class="fa-solid fa-comments"></i></div>
+                    <div class="row-item-body">
+                        <h5>Feedback Management</h5>
+                        <p>Read employee feedback and suggestions.</p>
+                    </div>
+                    <a th:href="@{/admin/viewfeedback}" class="btn btn-outline-secondary row-item-btn">
+                        View Feedback
+                    </a>
+                </div>
+
+                <div class="row-item fade-in-up">
+                    <div class="row-item-icon ri-gray"><i class="fa-solid fa-envelope-open-text"></i></div>
+                    <div class="row-item-body">
+                        <h5>Enquiry Management</h5>
+                        <p>Respond to enquiries from visitors.</p>
+                    </div>
+                    <a th:href="@{/admin/viewenquiries}" class="btn btn-outline-dark row-item-btn">
+                        View Enquiries
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+</div>
+
+</section>
+
+</html>

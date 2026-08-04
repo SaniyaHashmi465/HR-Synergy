@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html th:replace="~{base :: layout(~{::section})}">
+
+<section th:fragment="content">
+
+    <!-- Page CSS -->
+    <link rel="stylesheet" th:href="@{/css/viewjobs.css}" />
+
+    <!-- Page Header Banner -->
+    <div class="jm-header-banner">
+        <div class="jm-header-inner">
+            <div class="jm-header-text">
+                <div class="jm-header-icon-wrap">
+                    <i class="fa-solid fa-briefcase fa-lg"></i>
+                </div>
+                <div>
+                    <h1 class="jm-title">Job Management</h1>
+                    <p class="jm-subtitle">Create, update and manage job openings</p>
+                </div>
+            </div>
+            <div class="jm-header-actions">
+                <a th:href="@{/admin/addjob}" class="jm-post-btn">
+                    <i class="fa-solid fa-plus me-2"></i>Post New Job
+                </a>
+                <a th:href="@{/admin/dashboard}" class="jm-back-btn">
+                    <i class="fa-solid fa-arrow-left me-2"></i>Dashboard
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="jm-main-wrapper">
+
+        <!-- Success Alert -->
+        <div th:if="${success}" class="jm-success-alert" role="alert">
+            <div class="jm-alert-icon">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <div class="jm-alert-body">
+                <strong>Success!</strong>
+                <span th:text="${success}"></span>
+            </div>
+            <button type="button" class="jm-alert-close" onclick="this.closest('.jm-success-alert').remove()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <!-- Statistics Cards -->
+        <div class="jm-stats-row">
+
+            <div class="jm-stat-card">
+                <div class="jm-stat-icon bg-indigo">
+                    <i class="fa-solid fa-briefcase"></i>
+                </div>
+                <div class="jm-stat-body">
+                    <span class="jm-stat-value" th:text="${#lists.size(jobs)}">0</span>
+                    <span class="jm-stat-label">Total Jobs</span>
+                </div>
+                <div class="jm-stat-badge indigo">All Listings</div>
+            </div>
+
+            <div class="jm-stat-card">
+                <div class="jm-stat-icon bg-emerald">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <div class="jm-stat-body">
+                    <span class="jm-stat-value jm-client-active">—</span>
+                    <span class="jm-stat-label">Active Jobs</span>
+                </div>
+                <div class="jm-stat-badge emerald">Open Roles</div>
+            </div>
+
+            <div class="jm-stat-card">
+                <div class="jm-stat-icon bg-violet">
+                    <i class="fa-solid fa-users"></i>
+                </div>
+                <div class="jm-stat-body">
+                    <span class="jm-stat-value jm-client-vacancies">—</span>
+                    <span class="jm-stat-label">Open Vacancies</span>
+                </div>
+                <div class="jm-stat-badge violet">Total Seats</div>
+            </div>
+
+            <div class="jm-stat-card">
+                <div class="jm-stat-icon bg-amber">
+                    <i class="fa-solid fa-arrow-trend-up"></i>
+                </div>
+                <div class="jm-stat-body">
+                    <span class="jm-stat-value jm-client-pipeline">—</span>
+                    <span class="jm-stat-label">Recruitment Pipeline</span>
+                </div>
+                <div class="jm-stat-badge amber">Recent Posts</div>
+            </div>
+
+        </div>
+
+        <!-- Table Card -->
+        <div class="jm-table-card">
+            <div class="jm-table-header">
+                <div class="jm-table-title-group">
+                    <i class="fa-solid fa-table-list jm-table-title-icon"></i>
+                    <div>
+                        <h2 class="jm-table-title">Job Records</h2>
+                        <p class="jm-table-subtitle">All posted job openings and their details</p>
+                    </div>
+                </div>
+                <span class="jm-records-badge" id="jmRecordsBadge">Loading…</span>
+            </div>
+
+            <div class="jm-table-body">
+                <div class="table-responsive">
+                    <table id="jobTable" class="table jm-table">
+                        <thead>
+                            <tr>
+                                <th><i class="fa-solid fa-hashtag me-1 op-50"></i>ID</th>
+                                <th><i class="fa-solid fa-briefcase me-1 op-50"></i>Job Profile</th>
+                                <th><i class="fa-solid fa-users me-1 op-50"></i>Vacancies</th>
+                                <th><i class="fa-solid fa-graduation-cap me-1 op-50"></i>Qualification</th>
+                                <th><i class="fa-solid fa-clock me-1 op-50"></i>Experience</th>
+                                <th><i class="fa-regular fa-calendar me-1 op-50"></i>Posted Date</th>
+                                <th class="text-center"><i class="fa-solid fa-gear me-1 op-50"></i>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="job : ${jobs}" class="jm-row">
+                                <td>
+                                    <span class="jm-id-badge" th:text="${job.jobid}"></span>
+                                </td>
+                                <td>
+                                    <div class="jm-profile-cell">
+                                        <div class="jm-profile-icon">
+                                            <i class="fa-solid fa-file-lines"></i>
+                                        </div>
+                                        <span class="jm-profile-text" th:text="${job.jobprofile}"></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="jm-vacancy-badge" th:text="${job.noofvacancy}"></span>
+                                </td>
+                                <td>
+                                    <span class="jm-qual-chip" th:text="${job.qualification}"></span>
+                                </td>
+                                <td>
+                                    <span class="jm-exp-chip">
+                                        <i class="fa-solid fa-hourglass-half me-1"></i>
+                                        <span th:text="${job.experience}"></span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="jm-date-chip">
+                                        <i class="fa-regular fa-calendar-check me-1"></i>
+                                        <span th:text="${job.posteddate}"></span>
+                                    </span>
+                                </td>
+                                <td class="text-center">
+                                    <div class="jm-action-group">
+                                        <a th:href="@{/admin/editjob/{id}(id=${job.jobid})}" class="jm-edit-btn" title="Edit Job">
+                                            <i class="fa-solid fa-pen-to-square me-1"></i>Edit
+                                        </a>
+                                        <a th:href="@{/admin/deletejob/{id}(id=${job.jobid})}"
+                                           onclick="return confirm('Are you sure?')"
+                                           class="jm-delete-btn" title="Delete Job">
+                                            <i class="fa-solid fa-trash me-1"></i>Delete
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Page JS -->
+    <script th:src="@{/js/viewjobs.js}"></script>
+
+</section>
+
+</html>

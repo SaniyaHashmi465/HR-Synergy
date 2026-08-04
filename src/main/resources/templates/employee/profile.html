@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html th:replace="~{base :: layout(~{::section})}">
+<section th:fragment="content">
+
+    <!-- Page CSS -->
+<!--    <link rel="stylesheet" th:href="@{/css/profile.css}" />-->
+
+    <!-- Page Header Banner -->
+    <div class="pr-header-banner">
+        <div class="pr-header-inner">
+            <div class="pr-header-text">
+                <div class="pr-header-icon-wrap">
+                    <i class="fa-solid fa-circle-user fa-lg"></i>
+                </div>
+                <div>
+                    <h1 class="pr-title">My Profile</h1>
+                    <p class="pr-subtitle">View your personal and professional details</p>
+                </div>
+            </div>
+            <a th:href="@{/employee/dashboard}" class="pr-back-btn">
+                <i class="fa-solid fa-arrow-left me-2"></i>Back to Dashboard
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="pr-main-wrapper">
+        <div class="pr-content-grid">
+
+            <!-- Left: Profile Summary Card -->
+            <aside class="pr-sidebar">
+
+                <!-- Avatar Card -->
+                <div class="pr-avatar-card">
+                    <div class="pr-avatar-ring">
+                        <div class="pr-avatar-circle">
+                            <i class="fa-solid fa-user pr-avatar-icon"></i>
+                        </div>
+                    </div>
+                    <h2 class="pr-emp-name" th:text="${employee.empname}">Employee Name</h2>
+                    <span class="pr-designation-badge" th:text="${employee.designation}">Designation</span>
+                    <div class="pr-dept-chip">
+                        <i class="fa-solid fa-building me-1"></i>
+                        <span th:text="${employee.department}">Department</span>
+                    </div>
+
+                    <div class="pr-avatar-divider"></div>
+
+                    <div class="pr-quick-stat">
+                        <div class="pr-qs-item">
+                            <span class="pr-qs-icon"><i class="fa-solid fa-id-badge"></i></span>
+                            <div>
+                                <span class="pr-qs-label">Employee ID</span>
+                                <span class="pr-qs-value" th:text="${employee.empid}">—</span>
+                            </div>
+                        </div>
+                        <div class="pr-qs-item">
+                            <span class="pr-qs-icon"><i class="fa-solid fa-venus-mars"></i></span>
+                            <div>
+                                <span class="pr-qs-label">Gender</span>
+                                <span class="pr-qs-value" th:text="${employee.gender}">—</span>
+                            </div>
+                        </div>
+                        <div class="pr-qs-item">
+                            <span class="pr-qs-icon emerald"><i class="fa-solid fa-indian-rupee-sign"></i></span>
+                            <div>
+                                <span class="pr-qs-label">Salary</span>
+                                <span class="pr-qs-value emerald" th:text="${employee.salary}">—</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Info Notice Card -->
+                <div class="pr-notice-card">
+                    <div class="pr-notice-icon-wrap">
+                        <i class="fa-solid fa-shield-check"></i>
+                    </div>
+                    <p class="pr-notice-title">Official Information</p>
+                    <p class="pr-notice-text">
+                        This information is maintained by HR / Admin. Contact HR for any official corrections.
+                    </p>
+                </div>
+
+            </aside>
+
+            <!-- Right: Details Section -->
+            <div class="pr-details-col">
+
+                <!-- Personal Information -->
+                <div class="pr-section-card" style="animation-delay:.05s">
+                    <div class="pr-section-header indigo">
+                        <div class="pr-section-icon">
+                            <i class="fa-solid fa-address-card"></i>
+                        </div>
+                        <div>
+                            <h3 class="pr-section-title">Personal Information</h3>
+                            <p class="pr-section-sub">Basic personal details</p>
+                        </div>
+                    </div>
+
+                    <div class="pr-fields-grid">
+
+                        <div class="pr-field-item">
+                            <div class="pr-field-icon-wrap bg-indigo-soft">
+                                <i class="fa-solid fa-hashtag"></i>
+                            </div>
+                            <div class="pr-field-body">
+                                <span class="pr-field-label">Employee ID</span>
+                                <span class="pr-field-value" th:text="${employee.empid}">—</span>
+                            </div>
+                        </div>
+
+                        <div class="pr-field-item">
+                            <div class="pr-field-icon-wrap bg-indigo-soft">
+                                <i class="fa-solid fa-user"></i>
+                            </div>
+                            <div class="pr-field-body">
+                                <span class="pr-field-label">Full Name</span>
+                                <span class="pr-field-value" th:text="${employee.empname}">—</span>
+                            </div>
+                        </div>
+
+                        <div class="pr-field-item">
+                            <div class="pr-field-icon-wrap bg-violet-soft">
+                                <i class="fa-solid fa-venus-mars"></i>
+                            </div>
+                            <div class="pr-field-body">
+                                <span class="pr-field-label">Gender</span>
+                                <span class="pr-field-value" th:text="${employee.gender}">—</span>
+                            </div>
+                        </div>
+
+                        <div class="pr-field-item">
+                            <div class="pr-field-icon-wrap bg-violet-soft">
+                                <i class="fa-solid fa-people-roof"></i>
+                            </div>
+                            <div class="pr-field-body">
+                                <span class="pr-field-label">Father's Name</span>
+                                <span class="pr-field-value" th:text="${employee.fname}">—</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="pr-section-card" style="animation-delay:.12s">
+                    <div class="pr-section-header teal">
+                        <div class="pr-section-icon">
+                            <i class="fa-solid fa-address-book"></i>
+                        </div>
+                        <div>
+                            <h3 class="pr-section-title">Contact Information</h3>
+                            <p class="pr-section-sub">How to reach you</p>
+                        </div>
+                    </div>
+
+                    <div class="pr-fields-grid">
+
+                        <div class="pr-field-item">
+                            <div class="pr-field-icon-wrap bg-teal-soft">
+                                <i class="fa-solid fa-phone-volume"></i>
+                            </div>
+                            <div class="pr-field-body">
+                                <span class="pr-field-label">Contact No</span>
+                                <span class="pr-field-value" th:text="${employee.contactno}">—</span>
+                            </div>
+                        </div>
+
+                        <div class="pr-field-item">
+                            <div class="pr-field-icon-wrap bg-teal-soft">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div class="pr-field-body">
+                                <span class="pr-field-label">Email Address</span>
+                                <span class="pr-field-value" th:text="${employee.emailaddress}">—</span>
+                            </div>
+                        </div>
+
+                        <div class="pr-field-item pr-full-col">
+                            <div class="pr-field-icon-wrap bg-amber-soft">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div class="pr-field-body">
+                                <span class="pr-field-label">Address Line 1</span>
+                                <span class="pr-field-value" th:text="${employee.address1}">—</span>
+                            </div>
+                        </div>
+
+                        <div class="pr-field-item pr-full-col">
+                            <div class="pr-field-icon-wrap bg-amber-soft">
+                                <i class="fa-solid fa-map-location-dot"></i>
+                            </div>
+                            <div class="pr-field-body">
+                                <span class="pr-field-label">Address Line 2</span>
+                                <span class="pr-field-value" th:text="${employee.address2}">—</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Professional Information -->
+                <div class="pr-section-card" style="animation-delay:.20s">
+                    <div class="pr-section-header emerald">
+                        <div class="pr-section-icon">
+                            <i class="fa-solid fa-briefcase"></i>
+                        </div>
+                        <div>
+                            <h3 class="pr-section-title">Professional Information</h3>
+                            <p class="pr-section-sub">Your role and compensation details</p>
+                        </div>
+                    </div>
+
+                    <div class="pr-fields-grid">
+
+                        <div class="pr-field-item">
+                            <div class="pr-field-icon-wrap bg-emerald-soft">
+                                <i class="fa-solid fa-building"></i>
+                            </div>
+                            <div class="pr-field-body">
+                                <span class="pr-field-label">Department</span>
+                                <span class="pr-field-value" th:text="${employee.department}">—</span>
+                            </div>
+                        </div>
+
+                        <div class="pr-field-item">
+                            <div class="pr-field-icon-wrap bg-emerald-soft">
+                                <i class="fa-solid fa-user-tie"></i>
+                            </div>
+                            <div class="pr-field-body">
+                                <span class="pr-field-label">Designation</span>
+                                <span class="pr-field-value" th:text="${employee.designation}">—</span>
+                            </div>
+                        </div>
+
+                        <div class="pr-field-item">
+                            <div class="pr-field-icon-wrap bg-emerald-soft">
+                                <i class="fa-solid fa-indian-rupee-sign"></i>
+                            </div>
+                            <div class="pr-field-body">
+                                <span class="pr-field-label">Salary</span>
+                                <span class="pr-field-value salary-highlight" th:text="${employee.salary}">—</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+</html>
